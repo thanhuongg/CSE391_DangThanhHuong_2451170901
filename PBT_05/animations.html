@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PBT05 Bài B2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <h1 class="page-header__title">CSS Animations Demo</h1>
+        <p class="page-header__sub">5 hiệu ứng — Transitions, @keyframes, Hover Effects</p>
+    </header>
+
+    <main class="page-main">
+        <section class="demo-section">
+            <h2 class="demo-section__title">
+                <span class="demo-section__number">01</span>
+                Card Hover Effect
+            </h2>
+            <p class="demo-section__desc">Hover vào card để thấy: nổi lên <code>translateY(-8px)</code> + shadow tăng mượt mà.</p>
+
+            <div class="card-grid">
+                <article class="product-card">
+                    <div class="product-card__img-wrap">
+                        <img src="https://picsum.photos/seed/card1/400/300" alt="Sản phẩm 1" class="product-card__img" loading="lazy">
+                    </div>
+                    <div class="product-card__body">
+                        <span class="product-card__tag">Điện tử</span>
+                        <h3 class="product-card__name">Tai Nghe Nova X5</h3>
+                        <p class="product-card__price">1.290.000đ</p>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-card__img-wrap">
+                        <img src="https://picsum.photos/seed/card2/400/300" alt="Sản phẩm 2" class="product-card__img" loading="lazy">
+                    </div>
+                    <div class="product-card__body">
+                        <span class="product-card__tag">Thời trang</span>
+                        <h3 class="product-card__name">Balo Urban Classic</h3>
+                        <p class="product-card__price">750.000đ</p>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-card__img-wrap">
+                        <img src="https://picsum.photos/seed/card3/400/300" alt="Sản phẩm 3" class="product-card__img" loading="lazy">
+                    </div>
+                    <div class="product-card__body">
+                        <span class="product-card__tag">Gia dụng</span>
+                        <h3 class="product-card__name">Nồi Cơm Điện SmartCook</h3>
+                        <p class="product-card__price">890.000đ</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section class="demo-section">
+            <h2 class="demo-section__title">
+                <span class="demo-section__number">02</span>
+                Button Hover Effects
+            </h2>
+            <p class="demo-section__desc">Hover vào các nút: đổi màu, scale nhẹ, và glow effect.</p>
+
+            <div class="btn-demo-group">
+                <button class="btn btn--primary">Mua ngay</button>
+                <button class="btn btn--outline">Yêu thích</button>
+                <button class="btn btn--danger">Xóa</button>
+                <button class="btn btn--success">Xác nhận</button>
+                <button class="btn btn--ghost">Tìm hiểu thêm →</button>
+            </div>
+        </section>
+        <section class="demo-section">
+            <h2 class="demo-section__title">
+                <span class="demo-section__number">03</span>
+                Image Zoom on Hover
+            </h2>
+            <p class="demo-section__desc">
+                Container có <code>overflow: hidden</code>. Hover → ảnh <code>transform: scale(1.1)</code> nhưng không vỡ ra ngoài khung.
+            </p>
+
+            <div class="zoom-gallery">
+                <figure class="zoom-card">
+                    <div class="zoom-card__frame">
+                        <img src="https://picsum.photos/seed/zoom1/600/400" alt="Zoom demo 1" class="zoom-card__img" loading="lazy">
+                        <div class="zoom-card__overlay">
+                            <span class="zoom-card__label">Xem chi tiết 🔍</span>
+                        </div>
+                    </div>
+                    <figcaption class="zoom-card__caption">Điện thoại SkyPro X15</figcaption>
+                </figure>
+
+                <figure class="zoom-card">
+                    <div class="zoom-card__frame">
+                        <img src="https://picsum.photos/seed/zoom2/600/400" alt="Zoom demo 2" class="zoom-card__img" loading="lazy">
+                        <div class="zoom-card__overlay">
+                            <span class="zoom-card__label">Xem chi tiết 🔍</span>
+                        </div>
+                    </div>
+                    <figcaption class="zoom-card__caption">Laptop UltraSlim 14"</figcaption>
+                </figure>
+
+                <figure class="zoom-card">
+                    <div class="zoom-card__frame">
+                        <img src="https://picsum.photos/seed/zoom3/600/400" alt="Zoom demo 3" class="zoom-card__img" loading="lazy">
+                        <div class="zoom-card__overlay">
+                            <span class="zoom-card__label">Xem chi tiết 🔍</span>
+                        </div>
+                    </div>
+                    <figcaption class="zoom-card__caption">Máy ảnh ZX7 Pro</figcaption>
+                </figure>
+            </div>
+        </section>
+        <section class="demo-section">
+            <h2 class="demo-section__title">
+                <span class="demo-section__number">04</span>
+                Loading Spinners
+            </h2>
+            <p class="demo-section__desc">
+                Dùng <code>@keyframes spin</code> + <code>animation: spin 1s linear infinite</code>.
+                Border một phần được tô màu, phần còn lại trong suốt tạo hiệu ứng quay.
+            </p>
+
+            <div class="spinners-demo">
+                <div class="spinner-wrap">
+                    <div class="spinner spinner--sm"></div>
+                    <span class="spinner__label">Small</span>
+                </div>
+                <div class="spinner-wrap">
+                    <div class="spinner spinner--md"></div>
+                    <span class="spinner__label">Medium</span>
+                </div>
+                <div class="spinner-wrap">
+                    <div class="spinner spinner--lg"></div>
+                    <span class="spinner__label">Large</span>
+                </div>
+                <div class="spinner-wrap">
+                    <div class="spinner spinner--accent"></div>
+                    <span class="spinner__label">Accent</span>
+                </div>
+                <div class="spinner-wrap">
+                    <div class="spinner spinner--dual"></div>
+                    <span class="spinner__label">Dual Ring</span>
+                </div>
+            </div>
+
+            <!-- Skeleton loading demo -->
+            <div class="skeleton-demo">
+                <p class="demo-section__desc" style="margin-bottom: 12px">Skeleton Loading (shimmer effect):</p>
+                <div class="skeleton-card">
+                    <div class="skeleton skeleton--image"></div>
+                    <div class="skeleton-card__body">
+                        <div class="skeleton skeleton--title"></div>
+                        <div class="skeleton skeleton--text"></div>
+                        <div class="skeleton skeleton--text skeleton--short"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="demo-section">
+            <h2 class="demo-section__title">
+                <span class="demo-section__number">05</span>
+                Fade-in Entrance Animation
+            </h2>
+            <p class="demo-section__desc">
+                Các card xuất hiện với <code>@keyframes fadeInUp</code>:
+                từ <code>opacity: 0; translateY(20px)</code> → <code>opacity: 1; translateY(0)</code>.
+                Dùng <code>animation-delay</code> để stagger (hiệu ứng lần lượt).
+            </p>
+
+            <div class="fade-grid" id="fadeGrid">
+                <div class="fade-card fade-card--delay-1">
+                    <div class="fade-card__icon">⚡</div>
+                    <h3 class="fade-card__title">Nhanh chóng</h3>
+                    <p class="fade-card__text">Giao hàng trong 2 giờ tại nội thành TP.HCM và Hà Nội.</p>
+                </div>
+                <div class="fade-card fade-card--delay-2">
+                    <div class="fade-card__icon">🛡️</div>
+                    <h3 class="fade-card__title">Bảo đảm</h3>
+                    <p class="fade-card__text">Đổi trả miễn phí trong 30 ngày nếu sản phẩm lỗi.</p>
+                </div>
+                <div class="fade-card fade-card--delay-3">
+                    <div class="fade-card__icon">💎</div>
+                    <h3 class="fade-card__title">Chính hãng</h3>
+                    <p class="fade-card__text">100% sản phẩm nhập khẩu chính ngạch, có tem bảo hành.</p>
+                </div>
+                <div class="fade-card fade-card--delay-4">
+                    <div class="fade-card__icon">🎁</div>
+                    <h3 class="fade-card__title">Ưu đãi</h3>
+                    <p class="fade-card__text">Tích điểm mỗi đơn hàng, đổi quà hấp dẫn mỗi tháng.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="page-footer">
+        <p>PBT05 — Bài B2: CSS Transitions & Animations Demo</p>
+    </footer>
+
+</body>
+</html>

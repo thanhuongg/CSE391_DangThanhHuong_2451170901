@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopNow — Cửa Hàng Trực Tuyến</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header class="header">
+        <div class="header__logo">
+            <span class="header__logo-icon">◈</span>
+            <span class="header__logo-text">ShopNow</span>
+        </div>
+
+        <!-- Desktop nav -->
+        <nav class="header__nav">
+            <a href="#" class="header__nav-link header__nav-link--active">Trang chủ</a>
+            <a href="#" class="header__nav-link">Sản phẩm</a>
+            <a href="#" class="header__nav-link">Khuyến mãi</a>
+            <a href="#" class="header__nav-link">Liên hệ</a>
+        </nav>
+
+        <div class="header__actions">
+            <button class="header__cart-btn" aria-label="Giỏ hàng">
+                🛒 <span class="header__cart-count">3</span>
+            </button>
+            <!-- Hamburger (mobile only) -->
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Mở menu">
+                <span class="hamburger-btn__line"></span>
+                <span class="hamburger-btn__line"></span>
+                <span class="hamburger-btn__line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-menu__nav">
+            <a href="#" class="mobile-menu__link">Trang chủ</a>
+            <a href="#" class="mobile-menu__link">Sản phẩm</a>
+            <a href="#" class="mobile-menu__link">Khuyến mãi</a>
+            <a href="#" class="mobile-menu__link">Liên hệ</a>
+        </nav>
+    </div>
+
+    <!-- ========== MAIN LAYOUT ========== -->
+    <div class="layout">
+
+        <!-- SIDEBAR (tablet/desktop) -->
+        <aside class="sidebar">
+            <div class="sidebar__section">
+                <h3 class="sidebar__title">Danh mục</h3>
+                <ul class="sidebar__list">
+                    <li><label class="sidebar__checkbox-label"><input type="checkbox" checked> Điện tử <span>(24)</span></label></li>
+                    <li><label class="sidebar__checkbox-label"><input type="checkbox"> Thời trang <span>(18)</span></label></li>
+                    <li><label class="sidebar__checkbox-label"><input type="checkbox"> Gia dụng <span>(31)</span></label></li>
+                    <li><label class="sidebar__checkbox-label"><input type="checkbox"> Sách <span>(12)</span></label></li>
+                    <li><label class="sidebar__checkbox-label"><input type="checkbox"> Thể thao <span>(9)</span></label></li>
+                </ul>
+            </div>
+
+            <div class="sidebar__section">
+                <h3 class="sidebar__title">Khoảng giá</h3>
+                <div class="sidebar__price-range">
+                    <input type="range" min="0" max="10000000" value="5000000" class="sidebar__range">
+                    <div class="sidebar__price-labels">
+                        <span>0đ</span>
+                        <span>10 triệu</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar__section">
+                <h3 class="sidebar__title">Đánh giá</h3>
+                <ul class="sidebar__list">
+                    <li><label class="sidebar__checkbox-label"><input type="checkbox"> ⭐⭐⭐⭐⭐</label></li>
+                    <li><label class="sidebar__checkbox-label"><input type="checkbox"> ⭐⭐⭐⭐+</label></li>
+                    <li><label class="sidebar__checkbox-label"><input type="checkbox"> ⭐⭐⭐+</label></li>
+                </ul>
+            </div>
+
+            <button class="sidebar__apply-btn">Áp dụng bộ lọc</button>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <p class="toolbar__result">Hiển thị <strong>8</strong> sản phẩm</p>
+                <div class="toolbar__controls">
+                    <select class="toolbar__sort">
+                        <option>Phổ biến nhất</option>
+                        <option>Giá tăng dần</option>
+                        <option>Giá giảm dần</option>
+                        <option>Mới nhất</option>
+                    </select>
+                    <!-- Mobile filter trigger -->
+                    <button class="toolbar__filter-btn">⚙ Lọc</button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid">
+
+                <!-- Card 1 -->
+                <article class="product-card product-card--hot">
+                    <div class="product-card__image-wrap">
+                        <img src="https://picsum.photos/seed/phone1/400/300" alt="Điện thoại thông minh" class="product-card__image" loading="lazy">
+                        <span class="product-card__badge">HOT</span>
+                        <button class="product-card__wishlist" aria-label="Yêu thích">♡</button>
+                    </div>
+                    <div class="product-card__body">
+                        <p class="product-card__category">Điện tử</p>
+                        <h3 class="product-card__name">Điện Thoại SkyPro X15</h3>
+                        <div class="product-card__rating">⭐⭐⭐⭐⭐ <span>(128)</span></div>
+                        <div class="product-card__pricing">
+                            <span class="product-card__price">8.990.000đ</span>
+                            <span class="product-card__original">12.000.000đ</span>
+                        </div>
+                        <button class="product-card__btn">Thêm vào giỏ</button>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="product-card">
+                    <div class="product-card__image-wrap">
+                        <img src="https://picsum.photos/seed/laptop2/400/300" alt="Laptop" class="product-card__image" loading="lazy">
+                        <button class="product-card__wishlist" aria-label="Yêu thích">♡</button>
+                    </div>
+                    <div class="product-card__body">
+                        <p class="product-card__category">Điện tử</p>
+                        <h3 class="product-card__name">Laptop UltraSlim 14"</h3>
+                        <div class="product-card__rating">⭐⭐⭐⭐ <span>(87)</span></div>
+                        <div class="product-card__pricing">
+                            <span class="product-card__price">22.500.000đ</span>
+                        </div>
+                        <button class="product-card__btn">Thêm vào giỏ</button>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="product-card product-card--sale">
+                    <div class="product-card__image-wrap">
+                        <img src="https://picsum.photos/seed/headphone3/400/300" alt="Tai nghe" class="product-card__image" loading="lazy">
+                        <span class="product-card__badge product-card__badge--sale">-30%</span>
+                        <button class="product-card__wishlist" aria-label="Yêu thích">♡</button>
+                    </div>
+                    <div class="product-card__body">
+                        <p class="product-card__category">Điện tử</p>
+                        <h3 class="product-card__name">Tai Nghe Nova Pro ANC</h3>
+                        <div class="product-card__rating">⭐⭐⭐⭐⭐ <span>(214)</span></div>
+                        <div class="product-card__pricing">
+                            <span class="product-card__price">2.100.000đ</span>
+                            <span class="product-card__original">3.000.000đ</span>
+                        </div>
+                        <button class="product-card__btn">Thêm vào giỏ</button>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="product-card">
+                    <div class="product-card__image-wrap">
+                        <img src="https://picsum.photos/seed/watch4/400/300" alt="Đồng hồ" class="product-card__image" loading="lazy">
+                        <button class="product-card__wishlist" aria-label="Yêu thích">♡</button>
+                    </div>
+                    <div class="product-card__body">
+                        <p class="product-card__category">Thời trang</p>
+                        <h3 class="product-card__name">Đồng Hồ Thông Minh Aura</h3>
+                        <div class="product-card__rating">⭐⭐⭐⭐ <span>(56)</span></div>
+                        <div class="product-card__pricing">
+                            <span class="product-card__price">4.200.000đ</span>
+                        </div>
+                        <button class="product-card__btn">Thêm vào giỏ</button>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="product-card">
+                    <div class="product-card__image-wrap">
+                        <img src="https://picsum.photos/seed/camera5/400/300" alt="Máy ảnh" class="product-card__image" loading="lazy">
+                        <button class="product-card__wishlist" aria-label="Yêu thích">♡</button>
+                    </div>
+                    <div class="product-card__body">
+                        <p class="product-card__category">Điện tử</p>
+                        <h3 class="product-card__name">Máy Ảnh Mirrorless ZX7</h3>
+                        <div class="product-card__rating">⭐⭐⭐⭐⭐ <span>(43)</span></div>
+                        <div class="product-card__pricing">
+                            <span class="product-card__price">18.900.000đ</span>
+                        </div>
+                        <button class="product-card__btn">Thêm vào giỏ</button>
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="product-card product-card--sale">
+                    <div class="product-card__image-wrap">
+                        <img src="https://picsum.photos/seed/bag6/400/300" alt="Túi" class="product-card__image" loading="lazy">
+                        <span class="product-card__badge product-card__badge--sale">-20%</span>
+                        <button class="product-card__wishlist" aria-label="Yêu thích">♡</button>
+                    </div>
+                    <div class="product-card__body">
+                        <p class="product-card__category">Thời trang</p>
+                        <h3 class="product-card__name">Balo Urban Trek 25L</h3>
+                        <div class="product-card__rating">⭐⭐⭐⭐ <span>(179)</span></div>
+                        <div class="product-card__pricing">
+                            <span class="product-card__price">640.000đ</span>
+                            <span class="product-card__original">800.000đ</span>
+                        </div>
+                        <button class="product-card__btn">Thêm vào giỏ</button>
+                    </div>
+                </article>
+
+                <!-- Card 7 -->
+                <article class="product-card">
+                    <div class="product-card__image-wrap">
+                        <img src="https://picsum.photos/seed/speaker7/400/300" alt="Loa" class="product-card__image" loading="lazy">
+                        <button class="product-card__wishlist" aria-label="Yêu thích">♡</button>
+                    </div>
+                    <div class="product-card__body">
+                        <p class="product-card__category">Điện tử</p>
+                        <h3 class="product-card__name">Loa Bluetooth SoundWave 360</h3>
+                        <div class="product-card__rating">⭐⭐⭐⭐ <span>(92)</span></div>
+                        <div class="product-card__pricing">
+                            <span class="product-card__price">1.350.000đ</span>
+                        </div>
+                        <button class="product-card__btn">Thêm vào giỏ</button>
+                    </div>
+                </article>
+
+                <!-- Card 8 -->
+                <article class="product-card product-card--hot">
+                    <div class="product-card__image-wrap">
+                        <img src="https://picsum.photos/seed/tablet8/400/300" alt="Máy tính bảng" class="product-card__image" loading="lazy">
+                        <span class="product-card__badge">MỚI</span>
+                        <button class="product-card__wishlist" aria-label="Yêu thích">♡</button>
+                    </div>
+                    <div class="product-card__body">
+                        <p class="product-card__category">Điện tử</p>
+                        <h3 class="product-card__name">Máy Tính Bảng PadPro 11"</h3>
+                        <div class="product-card__rating">⭐⭐⭐⭐⭐ <span>(31)</span></div>
+                        <div class="product-card__pricing">
+                            <span class="product-card__price">14.500.000đ</span>
+                        </div>
+                        <button class="product-card__btn">Thêm vào giỏ</button>
+                    </div>
+                </article>
+
+            </div><!-- /product-grid -->
+
+        </main>
+
+        <!-- ADS BAR (desktop only) -->
+        <aside class="ads-bar">
+            <div class="ads-bar__widget">
+                <h4 class="ads-bar__title">🔥 Flash Sale</h4>
+                <p class="ads-bar__countdown">Còn lại: <strong id="countdown">02:47:13</strong></p>
+            </div>
+            <div class="ads-bar__widget">
+                <h4 class="ads-bar__title">💎 Premium</h4>
+                <p class="ads-bar__text">Nâng cấp tài khoản để nhận ưu đãi độc quyền mỗi ngày.</p>
+                <button class="ads-bar__btn">Tìm hiểu thêm</button>
+            </div>
+            <div class="ads-bar__widget">
+                <h4 class="ads-bar__title">📦 Miễn phí vận chuyển</h4>
+                <p class="ads-bar__text">Đơn hàng từ 500.000đ được miễn phí ship toàn quốc.</p>
+            </div>
+        </aside>
+
+    </div><!-- /layout -->
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__brand">
+                <span class="footer__logo">◈ ShopNow</span>
+                <p>Mua sắm thông minh, sống chất lượng.</p>
+            </div>
+            <div class="footer__links">
+                <h4>Hỗ trợ</h4>
+                <a href="#">Chính sách đổi trả</a>
+                <a href="#">Vận chuyển</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer__links">
+                <h4>Công ty</h4>
+                <a href="#">Về chúng tôi</a>
+                <a href="#">Tuyển dụng</a>
+                <a href="#">Blog</a>
+            </div>
+            <div class="footer__contact">
+                <h4>Liên hệ</h4>
+                <p>📞 1800-9999</p>
+                <p>📧 hello@shopnow.vn</p>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>© 2025 ShopNow. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const btn = document.getElementById('hamburgerBtn');
+        const menu = document.getElementById('mobileMenu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('mobile-menu--open');
+            btn.classList.toggle('hamburger-btn--active');
+        });
+
+        // Countdown timer
+        function updateCountdown() {
+            const el = document.getElementById('countdown');
+            if (!el) return;
+            const parts = el.textContent.split(':').map(Number);
+            let [h, m, s] = parts;
+            s--;
+            if (s < 0) { s = 59; m--; }
+            if (m < 0) { m = 59; h--; }
+            if (h < 0) { h = 23; m = 59; s = 59; }
+            el.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        }
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
