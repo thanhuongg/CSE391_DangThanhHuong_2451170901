@@ -1,12 +1,712 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>ShopVN — E-Commerce Landing Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        .hero-slide-1 {
+            background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+            min-height: 480px;
+        }
+
+        .hero-slide-2 {
+            background: linear-gradient(135deg, #198754 0%, #20c997 100%);
+            min-height: 480px;
+        }
+
+        .hero-slide-3 {
+            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+            min-height: 480px;
+        }
+
+        .product-img-placeholder {
+            background: #f8f9fa;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .12) !important;
+        }
+
+        .badge-sale {
+            top: 12px;
+            left: 12px;
+        }
+    </style>
 </head>
+
 <body>
-    
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4 text-primary" href="#">
+                <i class="bi bi-bag-heart-fill me-1"></i>ShopVN
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-2">
+                    <li class="nav-item">
+                        <a class="nav-link active fw-medium" href="#">Trang Chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="#">Sản Phẩm</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-medium" href="#" data-bs-toggle="dropdown">Danh Mục</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Điện Tử</a></li>
+                            <li><a class="dropdown-item" href="#">Thời Trang</a></li>
+                            <li><a class="dropdown-item" href="#">Gia Dụng</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Tất Cả Danh Mục</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="#">Flash Sale</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="input-group" style="max-width: 260px;">
+                        <input class="form-control form-control-sm" type="search" placeholder="Tìm sản phẩm...">
+                        <button class="btn btn-primary btn-sm" type="button">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                    <a href="#" class="btn btn-outline-secondary btn-sm position-relative">
+                        <i class="bi bi-cart3 fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            3<span class="visually-hidden">sản phẩm trong giỏ</span>
+                        </span>
+                    </a>
+                    <a href="#" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-person-circle"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="hero-slide-1 d-flex align-items-center justify-content-center text-white">
+                    <div class="text-center px-4 py-5">
+                        <span class="badge bg-warning text-dark mb-3 fs-6 px-3 py-2">Flash Sale Hôm Nay</span>
+                        <h1 class="display-4 fw-bold mb-3">Điện Tử Chính Hãng<br>Giảm Đến <span
+                                class="text-warning">50%</span></h1>
+                        <p class="lead mb-4 opacity-75">Hàng ngàn sản phẩm điện tử, công nghệ với giá tốt nhất thị
+                            trường.</p>
+                        <div class="d-flex gap-3 justify-content-center">
+                            <a href="#products" class="btn btn-light btn-lg px-4 fw-semibold">Mua Ngay</a>
+                            <a href="#" class="btn btn-outline-light btn-lg px-4">Xem Thêm</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <div class="hero-slide-2 d-flex align-items-center justify-content-center text-white">
+                    <div class="text-center px-4 py-5">
+                        <span class="badge bg-light text-success mb-3 fs-6 px-3 py-2">BST Mùa Hè</span>
+                        <h1 class="display-4 fw-bold mb-3">Thời Trang Hè 2025<br>Phong Cách & Tươi Mát</h1>
+                        <p class="lead mb-4 opacity-75">Bộ sưu tập mùa hè mới nhất — phong cách, thoáng mát, tinh tế.
+                        </p>
+                        <div class="d-flex gap-3 justify-content-center">
+                            <a href="#products" class="btn btn-light btn-lg px-4 fw-semibold">Khám Phá</a>
+                            <a href="#" class="btn btn-outline-light btn-lg px-4">Lookbook</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="hero-slide-3 d-flex align-items-center justify-content-center text-white">
+                    <div class="text-center px-4 py-5">
+                        <span class="badge bg-dark mb-3 fs-6 px-3 py-2">Ưu Đãi Đặc Biệt</span>
+                        <h1 class="display-4 fw-bold mb-3">Miễn Phí Vận Chuyển<br>Cho Đơn Từ <span
+                                class="text-warning">199K</span></h1>
+                        <p class="lead mb-4 opacity-75">Giao hàng nhanh toàn quốc, đổi trả dễ dàng trong 30 ngày.</p>
+                        <div class="d-flex gap-3 justify-content-center">
+                            <a href="#products" class="btn btn-light btn-lg px-4 fw-semibold">Mua Ngay</a>
+                            <a href="#" class="btn btn-outline-light btn-lg px-4">Điều Kiện</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Trước</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Tiếp</span>
+        </button>
+    </div>
+    <div class="bg-light py-4 border-bottom">
+        <div class="container">
+            <div class="row row-cols-3 row-cols-md-6 g-3 text-center">
+                <div class="col">
+                    <a href="#" class="text-decoration-none text-dark d-flex flex-column align-items-center gap-2">
+                        <div class="bg-primary bg-opacity-10 rounded-circle p-3">
+                            <i class="bi bi-phone fs-4 text-primary"></i>
+                        </div>
+                        <small class="fw-medium">Điện Thoại</small>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="#" class="text-decoration-none text-dark d-flex flex-column align-items-center gap-2">
+                        <div class="bg-success bg-opacity-10 rounded-circle p-3">
+                            <i class="bi bi-laptop fs-4 text-success"></i>
+                        </div>
+                        <small class="fw-medium">Laptop</small>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="#" class="text-decoration-none text-dark d-flex flex-column align-items-center gap-2">
+                        <div class="bg-warning bg-opacity-10 rounded-circle p-3">
+                            <i class="bi bi-bag fs-4 text-warning"></i>
+                        </div>
+                        <small class="fw-medium">Thời Trang</small>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="#" class="text-decoration-none text-dark d-flex flex-column align-items-center gap-2">
+                        <div class="bg-danger bg-opacity-10 rounded-circle p-3">
+                            <i class="bi bi-house fs-4 text-danger"></i>
+                        </div>
+                        <small class="fw-medium">Gia Dụng</small>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="#" class="text-decoration-none text-dark d-flex flex-column align-items-center gap-2">
+                        <div class="bg-info bg-opacity-10 rounded-circle p-3">
+                            <i class="bi bi-book fs-4 text-info"></i>
+                        </div>
+                        <small class="fw-medium">Sách</small>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="#" class="text-decoration-none text-dark d-flex flex-column align-items-center gap-2">
+                        <div class="bg-secondary bg-opacity-10 rounded-circle p-3">
+                            <i class="bi bi-grid fs-4 text-secondary"></i>
+                        </div>
+                        <small class="fw-medium">Tất Cả</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="products" class="py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2 class="fw-bold mb-1">Sản Phẩm Nổi Bật</h2>
+                    <p class="text-muted mb-0">Hàng nghìn lựa chọn với giá tốt nhất</p>
+                </div>
+                <a href="#" class="btn btn-outline-primary d-none d-md-inline-flex align-items-center gap-2">
+                    Xem Tất Cả <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <!-- Badge Sale -->
+                        <span class="badge bg-danger position-absolute badge-sale z-1 fs-6">Sale</span>
+                        <div class="product-img-placeholder">
+                            <i class="bi bi-phone display-1 text-secondary opacity-25"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <p class="card-text text-muted small mb-1">Điện thoại</p>
+                            <h5 class="card-title fs-6 fw-semibold mb-2">iPhone 15 Pro Max 256GB</h5>
+                            <div class="d-flex align-items-center gap-1 mb-2">
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-half text-warning small"></i>
+                                <small class="text-muted">(128)</small>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="d-flex align-items-center gap-2 mb-3">
+                                    <span class="fw-bold text-danger fs-5">28.990.000đ</span>
+                                    <small class="text-muted text-decoration-line-through">33.990.000đ</small>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary btn-sm"
+                                        onclick="document.getElementById('quickViewModal').querySelector('.modal-title').textContent='iPhone 15 Pro Max'; new bootstrap.Modal(document.getElementById('quickViewModal')).show()">
+                                        <i class="bi bi-eye me-1"></i>Xem Nhanh
+                                    </button>
+                                    <button class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-cart-plus me-1"></i>Thêm Vào Giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <span class="badge bg-danger position-absolute badge-sale z-1 fs-6">Sale</span>
+                        <div class="product-img-placeholder">
+                            <i class="bi bi-laptop display-1 text-secondary opacity-25"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <p class="card-text text-muted small mb-1">Laptop</p>
+                            <h5 class="card-title fs-6 fw-semibold mb-2">MacBook Air M2 13" 8GB/256GB</h5>
+                            <div class="d-flex align-items-center gap-1 mb-2">
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star text-warning small"></i>
+                                <small class="text-muted">(84)</small>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="d-flex align-items-center gap-2 mb-3">
+                                    <span class="fw-bold text-danger fs-5">24.990.000đ</span>
+                                    <small class="text-muted text-decoration-line-through">28.990.000đ</small>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary btn-sm"
+                                        onclick="document.getElementById('quickViewModal').querySelector('.modal-title').textContent='MacBook Air M2'; new bootstrap.Modal(document.getElementById('quickViewModal')).show()">
+                                        <i class="bi bi-eye me-1"></i>Xem Nhanh
+                                    </button>
+                                    <button class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-cart-plus me-1"></i>Thêm Vào Giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <span class="badge bg-success position-absolute badge-sale z-1 fs-6">Mới</span>
+                        <div class="product-img-placeholder">
+                            <i class="bi bi-headphones display-1 text-secondary opacity-25"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <p class="card-text text-muted small mb-1">Âm thanh</p>
+                            <h5 class="card-title fs-6 fw-semibold mb-2">Sony WH-1000XM5 Chống ồn</h5>
+                            <div class="d-flex align-items-center gap-1 mb-2">
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <small class="text-muted">(256)</small>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="d-flex align-items-center gap-2 mb-3">
+                                    <span class="fw-bold text-danger fs-5">7.490.000đ</span>
+                                    <small class="text-muted text-decoration-line-through">8.990.000đ</small>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary btn-sm"
+                                        onclick="document.getElementById('quickViewModal').querySelector('.modal-title').textContent='Sony WH-1000XM5'; new bootstrap.Modal(document.getElementById('quickViewModal')).show()">
+                                        <i class="bi bi-eye me-1"></i>Xem Nhanh
+                                    </button>
+                                    <button class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-cart-plus me-1"></i>Thêm Vào Giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <span class="badge bg-danger position-absolute badge-sale z-1 fs-6">Sale</span>
+                        <div class="product-img-placeholder">
+                            <i class="bi bi-watch display-1 text-secondary opacity-25"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <p class="card-text text-muted small mb-1">Đồng hồ thông minh</p>
+                            <h5 class="card-title fs-6 fw-semibold mb-2">Apple Watch Series 9 GPS 41mm</h5>
+                            <div class="d-flex align-items-center gap-1 mb-2">
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-half text-warning small"></i>
+                                <small class="text-muted">(97)</small>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="d-flex align-items-center gap-2 mb-3">
+                                    <span class="fw-bold text-danger fs-5">9.990.000đ</span>
+                                    <small class="text-muted text-decoration-line-through">11.990.000đ</small>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary btn-sm"
+                                        onclick="document.getElementById('quickViewModal').querySelector('.modal-title').textContent='Apple Watch Series 9'; new bootstrap.Modal(document.getElementById('quickViewModal')).show()">
+                                        <i class="bi bi-eye me-1"></i>Xem Nhanh
+                                    </button>
+                                    <button class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-cart-plus me-1"></i>Thêm Vào Giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="product-img-placeholder">
+                            <i class="bi bi-tablet display-1 text-secondary opacity-25"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <p class="card-text text-muted small mb-1">Máy tính bảng</p>
+                            <h5 class="card-title fs-6 fw-semibold mb-2">iPad Air M2 11" WiFi 128GB</h5>
+                            <div class="d-flex align-items-center gap-1 mb-2">
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star text-warning small"></i>
+                                <small class="text-muted">(63)</small>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="d-flex align-items-center gap-2 mb-3">
+                                    <span class="fw-bold text-danger fs-5">15.990.000đ</span>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary btn-sm"
+                                        onclick="document.getElementById('quickViewModal').querySelector('.modal-title').textContent='iPad Air M2'; new bootstrap.Modal(document.getElementById('quickViewModal')).show()">
+                                        <i class="bi bi-eye me-1"></i>Xem Nhanh
+                                    </button>
+                                    <button class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-cart-plus me-1"></i>Thêm Vào Giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <span class="badge bg-danger position-absolute badge-sale z-1 fs-6">Sale</span>
+                        <div class="product-img-placeholder">
+                            <i class="bi bi-camera display-1 text-secondary opacity-25"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <p class="card-text text-muted small mb-1">Máy ảnh</p>
+                            <h5 class="card-title fs-6 fw-semibold mb-2">Sony Alpha A7C II Kit 28-60mm</h5>
+                            <div class="d-flex align-items-center gap-1 mb-2">
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-half text-warning small"></i>
+                                <small class="text-muted">(41)</small>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="d-flex align-items-center gap-2 mb-3">
+                                    <span class="fw-bold text-danger fs-5">44.990.000đ</span>
+                                    <small class="text-muted text-decoration-line-through">52.990.000đ</small>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary btn-sm"
+                                        onclick="document.getElementById('quickViewModal').querySelector('.modal-title').textContent='Sony Alpha A7C II'; new bootstrap.Modal(document.getElementById('quickViewModal')).show()">
+                                        <i class="bi bi-eye me-1"></i>Xem Nhanh
+                                    </button>
+                                    <button class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-cart-plus me-1"></i>Thêm Vào Giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <span class="badge bg-warning text-dark position-absolute badge-sale z-1 fs-6">Hot</span>
+                        <div class="product-img-placeholder">
+                            <i class="bi bi-tv display-1 text-secondary opacity-25"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <p class="card-text text-muted small mb-1">TV & Màn hình</p>
+                            <h5 class="card-title fs-6 fw-semibold mb-2">Samsung QLED 55" 4K Smart TV</h5>
+                            <div class="d-flex align-items-center gap-1 mb-2">
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star text-warning small"></i>
+                                <small class="text-muted">(189)</small>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="d-flex align-items-center gap-2 mb-3">
+                                    <span class="fw-bold text-danger fs-5">13.990.000đ</span>
+                                    <small class="text-muted text-decoration-line-through">17.990.000đ</small>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary btn-sm"
+                                        onclick="document.getElementById('quickViewModal').querySelector('.modal-title').textContent='Samsung QLED 55\u0022'; new bootstrap.Modal(document.getElementById('quickViewModal')).show()">
+                                        <i class="bi bi-eye me-1"></i>Xem Nhanh
+                                    </button>
+                                    <button class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-cart-plus me-1"></i>Thêm Vào Giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <span class="badge bg-danger position-absolute badge-sale z-1 fs-6">Sale</span>
+                        <div class="product-img-placeholder">
+                            <i class="bi bi-controller display-1 text-secondary opacity-25"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <p class="card-text text-muted small mb-1">Gaming</p>
+                            <h5 class="card-title fs-6 fw-semibold mb-2">PlayStation 5 Slim Disc Edition</h5>
+                            <div class="d-flex align-items-center gap-1 mb-2">
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <i class="bi bi-star-fill text-warning small"></i>
+                                <small class="text-muted">(312)</small>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="d-flex align-items-center gap-2 mb-3">
+                                    <span class="fw-bold text-danger fs-5">11.990.000đ</span>
+                                    <small class="text-muted text-decoration-line-through">13.990.000đ</small>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary btn-sm"
+                                        onclick="document.getElementById('quickViewModal').querySelector('.modal-title').textContent='PlayStation 5 Slim'; new bootstrap.Modal(document.getElementById('quickViewModal')).show()">
+                                        <i class="bi bi-eye me-1"></i>Xem Nhanh
+                                    </button>
+                                    <button class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-cart-plus me-1"></i>Thêm Vào Giỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="text-center mt-4 d-md-none">
+                <a href="#" class="btn btn-outline-primary px-5">Xem Tất Cả Sản Phẩm</a>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold" id="quickViewModalLabel">Chi Tiết Sản Phẩm</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4">
+                        <!-- Product Image -->
+                        <div class="col-12 col-md-5">
+                            <div class="product-img-placeholder rounded-3" style="height: 280px;">
+                                <i class="bi bi-image display-1 text-secondary opacity-25"></i>
+                            </div>
+                            <!-- Thumbnail row -->
+                            <div class="d-flex gap-2 mt-2">
+                                <div class="product-img-placeholder rounded-2 flex-fill" style="height: 60px;">
+                                    <i class="bi bi-image text-secondary opacity-25"></i>
+                                </div>
+                                <div class="product-img-placeholder rounded-2 flex-fill" style="height: 60px;">
+                                    <i class="bi bi-image text-secondary opacity-25"></i>
+                                </div>
+                                <div class="product-img-placeholder rounded-2 flex-fill" style="height: 60px;">
+                                    <i class="bi bi-image text-secondary opacity-25"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-7">
+                            <span class="badge bg-danger mb-2">Sale -17%</span>
+                            <h4 class="fw-bold mb-1">iPhone 15 Pro Max 256GB</h4>
+                            <div class="d-flex align-items-center gap-2 mb-3">
+                                <div class="d-flex gap-1">
+                                    <i class="bi bi-star-fill text-warning small"></i>
+                                    <i class="bi bi-star-fill text-warning small"></i>
+                                    <i class="bi bi-star-fill text-warning small"></i>
+                                    <i class="bi bi-star-fill text-warning small"></i>
+                                    <i class="bi bi-star-half text-warning small"></i>
+                                </div>
+                                <small class="text-muted">4.5 (128 đánh giá)</small>
+                            </div>
+                            <div class="d-flex align-items-baseline gap-2 mb-3">
+                                <span class="fs-4 fw-bold text-danger">28.990.000đ</span>
+                                <span class="text-muted text-decoration-line-through">33.990.000đ</span>
+                            </div>
+                            <p class="text-muted small mb-3">
+                                Chip A17 Pro mạnh mẽ, camera 48MP ProRAW, màn hình Super Retina XDR 6.7 inch, titanium
+                                design cao cấp, pin 4422mAh.
+                            </p>
+                            <div class="mb-3">
+                                <small class="fw-semibold d-block mb-2">Màu sắc:</small>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm border border-primary rounded-circle p-0"
+                                        style="width:28px;height:28px;background:#1f2020;"
+                                        title="Black Titanium"></button>
+                                    <button class="btn btn-sm border rounded-circle p-0"
+                                        style="width:28px;height:28px;background:#d4cfc9;"
+                                        title="Natural Titanium"></button>
+                                    <button class="btn btn-sm border rounded-circle p-0"
+                                        style="width:28px;height:28px;background:#4e5c6e;"
+                                        title="Blue Titanium"></button>
+                                    <button class="btn btn-sm border rounded-circle p-0"
+                                        style="width:28px;height:28px;background:#c4a882;"
+                                        title="White Titanium"></button>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <small class="fw-semibold d-block mb-2">Dung lượng:</small>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-outline-primary active">256GB</button>
+                                    <button class="btn btn-sm btn-outline-secondary">512GB</button>
+                                    <button class="btn btn-sm btn-outline-secondary">1TB</button>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2 mb-3">
+                                <div class="input-group" style="max-width: 120px;">
+                                    <button class="btn btn-outline-secondary btn-sm" type="button">-</button>
+                                    <input type="text" class="form-control form-control-sm text-center" value="1">
+                                    <button class="btn btn-outline-secondary btn-sm" type="button">+</button>
+                                </div>
+                                <button class="btn btn-primary flex-fill">
+                                    <i class="bi bi-cart-plus me-1"></i>Thêm Vào Giỏ
+                                </button>
+                            </div>
+                            <button class="btn btn-danger w-100">
+                                <i class="bi bi-lightning-fill me-1"></i>Mua Ngay
+                            </button>
+                            <div class="d-flex flex-wrap gap-2 mt-3">
+                                <span class="badge bg-light text-dark border"><i class="bi bi-truck me-1"></i>Miễn phí
+                                    ship</span>
+                                <span class="badge bg-light text-dark border"><i
+                                        class="bi bi-arrow-return-left me-1"></i>Đổi trả 30 ngày</span>
+                                <span class="badge bg-light text-dark border"><i class="bi bi-shield-check me-1"></i>BH
+                                    12 tháng</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-dark text-light pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <h5 class="fw-bold text-white mb-3">
+                        <i class="bi bi-bag-heart-fill text-primary me-1"></i>ShopVN
+                    </h5>
+                    <p class="text-secondary small mb-3">
+                        Sàn thương mại điện tử hàng đầu Việt Nam — hàng ngàn sản phẩm chính hãng, giao hàng nhanh toàn
+                        quốc.
+                    </p>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle p-2 lh-1"><i
+                                class="bi bi-facebook"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle p-2 lh-1"><i
+                                class="bi bi-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle p-2 lh-1"><i
+                                class="bi bi-youtube"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle p-2 lh-1"><i
+                                class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h6 class="fw-semibold text-white mb-3">Liên Kết Nhanh</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#"
+                                class="text-secondary text-decoration-none small hover-text-white">Trang Chủ</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none small">Sản Phẩm</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none small">Flash Sale</a>
+                        </li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none small">Danh Mục</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none small">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h6 class="fw-semibold text-white mb-3">Hỗ Trợ</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none small">Chính Sách Đổi
+                                Trả</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none small">Vận Chuyển</a>
+                        </li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none small">FAQ</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none small">Bảo Hành</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none small">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-lg-5">
+                    <h6 class="fw-semibold text-white mb-3">Đăng Ký Nhận Ưu Đãi</h6>
+                    <p class="text-secondary small mb-3">Nhận thông báo Flash Sale và ưu đãi độc quyền qua email.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control bg-dark border-secondary text-light"
+                            placeholder="email@example.com">
+                        <button class="btn btn-primary" type="button">Đăng Ký</button>
+                    </div>
+                    <div class="d-flex flex-column gap-1">
+                        <small class="text-secondary"><i class="bi bi-telephone me-2 text-primary"></i>Hotline: 1800
+                            1234 (miễn phí)</small>
+                        <small class="text-secondary"><i
+                                class="bi bi-envelope me-2 text-primary"></i>support@shopvn.com</small>
+                        <small class="text-secondary"><i class="bi bi-geo-alt me-2 text-primary"></i>123 Lý Tự Trọng,
+                            Q.1, TP.HCM</small>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-secondary my-4">
+
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <small class="text-secondary">© 2025 ShopVN. Tất cả quyền được bảo lưu.</small>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                    <div class="d-flex gap-2 justify-content-center justify-content-md-end align-items-center">
+                        <span class="badge bg-secondary">VISA</span>
+                        <span class="badge bg-secondary">Mastercard</span>
+                        <span class="badge bg-secondary">MoMo</span>
+                        <span class="badge bg-secondary">ZaloPay</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
