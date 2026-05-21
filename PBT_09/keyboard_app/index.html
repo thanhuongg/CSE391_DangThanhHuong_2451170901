@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- HEADER -->
+        <header class="app-header">
+            <h1>⌨️ Keyboard Navigation App</h1>
+            <p class="hint">
+                Dùng phím <kbd>←</kbd><kbd>→</kbd> chuyển ảnh &nbsp;|&nbsp;
+                <kbd>1</kbd>–<kbd>9</kbd> nhảy đến ảnh &nbsp;|&nbsp;
+                <kbd>Space</kbd> slideshow &nbsp;|&nbsp;
+                <kbd>Ctrl+K</kbd> Command Palette
+            </p>
+        </header>
+
+        <!-- GALLERY -->
+        <section class="gallery-section" aria-label="Gallery ảnh">
+            <div class="gallery-controls">
+                <button class="gallery-btn" id="prevBtn" aria-label="Ảnh trước">&#8592;</button>
+
+                <div class="gallery-main">
+                    <div class="gallery-img-wrapper">
+                        <img id="galleryImg" src="" alt="" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <span id="galleryTitle" class="gallery-title"></span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-thumbnails" id="galleryThumbnails" role="listbox" aria-label="Thumbnails"></div>
+
+                    <div class="gallery-info">
+                        <span id="galleryCounter" class="gallery-counter" aria-live="polite"></span>
+                        <button class="btn-play" id="playBtn" aria-label="Play/Pause slideshow">▶ Play</button>
+                    </div>
+                </div>
+
+                <button class="gallery-btn" id="nextBtn" aria-label="Ảnh tiếp theo">&#8594;</button>
+            </div>
+        </section>
+
+        <!-- KEYBOARD SHORTCUTS CHEAT SHEET -->
+        <section class="shortcuts-section" aria-label="Keyboard shortcuts">
+            <h2>Keyboard Shortcuts</h2>
+            <div class="shortcuts-grid">
+                <div class="shortcut-item"><kbd>←</kbd><kbd>→</kbd> <span>Chuyển ảnh</span></div>
+                <div class="shortcut-item"><kbd>1</kbd>–<kbd>9</kbd> <span>Nhảy đến ảnh</span></div>
+                <div class="shortcut-item"><kbd>Space</kbd> <span>Play/Pause</span></div>
+                <div class="shortcut-item"><kbd>Escape</kbd> <span>Đóng modal</span></div>
+                <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>K</kbd> <span>Command Palette</span></div>
+                <div class="shortcut-item"><kbd>Tab</kbd> <span>Di chuyển focus</span></div>
+            </div>
+        </section>
+
+        <!-- QUICK ACTIONS (focus navigation demo) -->
+        <section class="actions-section" aria-label="Quick actions">
+            <h2>Quick Actions</h2>
+            <div class="actions-row">
+                <button class="action-btn" aria-label="Tải ảnh xuống">💾 Tải xuống</button>
+                <button class="action-btn" aria-label="Chia sẻ ảnh">🔗 Chia sẻ</button>
+                <button class="action-btn" aria-label="Yêu thích ảnh">❤️ Yêu thích</button>
+                <button class="action-btn" aria-label="Xem thông tin ảnh">ℹ️ Thông tin</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- MODAL LIGHTBOX (Escape để đóng) -->
+    <div class="modal-overlay" id="lightboxModal" aria-modal="true" role="dialog" aria-label="Lightbox ảnh" style="display:none;">
+        <div class="lightbox-box">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Đóng lightbox">✕</button>
+            <img id="lightboxImg" src="" alt="" class="lightbox-img">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- COMMAND PALETTE (Ctrl+K) -->
+    <div class="command-overlay" id="commandOverlay" aria-modal="true" role="dialog" aria-label="Command palette" style="display:none;">
+        <div class="command-box">
+            <div class="command-search-row">
+                <span class="command-icon">⌘</span>
+                <input type="text" id="commandInput" placeholder="Tìm lệnh..." autocomplete="off" aria-label="Tìm kiếm lệnh">
+                <kbd class="command-esc">Esc</kbd>
+            </div>
+            <ul class="command-list" id="commandList" role="listbox" aria-label="Danh sách lệnh"></ul>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
