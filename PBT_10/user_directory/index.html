@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Directory — Đặng Thanh Hưởng 66KTPM1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+    <header class="header">
+        <div>
+            <h1>👥 User Directory</h1>
+            <p class="subtitle">Đặng Thanh Hưởng — 66KTPM1</p>
+        </div>
+        <button class="btn btn-primary" id="addUserBtn">+ Thêm User</button>
+    </header>
+
+    <!-- TOAST -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- SEARCH -->
+    <div class="toolbar">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Tìm theo tên hoặc email...">
+        <span class="user-count" id="userCount">0 users</span>
+    </div>
+
+    <!-- USER LIST -->
+    <div class="user-grid" id="userGrid"></div>
+
+    <!-- LOAD MORE (skeleton) dưới cùng khi loading -->
+    <div id="loadingBar" class="loading-bar" style="display:none">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+    </div>
+
+</div>
+
+<!-- MODAL: Add / Edit User -->
+<div class="modal-overlay" id="modalOverlay" style="display:none">
+    <div class="modal">
+        <div class="modal-header">
+            <h2 id="modalTitle">Thêm User</h2>
+            <button class="modal-close" id="modalClose">✕</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Họ tên *</label>
+                <input type="text" id="fieldName" placeholder="Nguyễn Văn A">
+            </div>
+            <div class="form-group">
+                <label>Username *</label>
+                <input type="text" id="fieldUsername" placeholder="nguyenvana">
+            </div>
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" id="fieldEmail" placeholder="email@example.com">
+            </div>
+            <div class="form-group">
+                <label>Điện thoại</label>
+                <input type="text" id="fieldPhone" placeholder="0912345678">
+            </div>
+            <div class="form-group">
+                <label>Website</label>
+                <input type="text" id="fieldWebsite" placeholder="example.com">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-ghost" id="modalCancelBtn">Hủy</button>
+            <button class="btn btn-primary" id="modalSaveBtn">Lưu</button>
+        </div>
+    </div>
+</div>
+
+<!-- CONFIRM DELETE -->
+<div class="modal-overlay" id="confirmOverlay" style="display:none">
+    <div class="modal modal-sm">
+        <div class="modal-header">
+            <h2>Xác nhận xóa</h2>
+        </div>
+        <div class="modal-body">
+            <p id="confirmMsg">Bạn chắc chắn muốn xóa user này?</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-ghost" id="confirmCancelBtn">Hủy</button>
+            <button class="btn btn-danger" id="confirmDeleteBtn">Xóa</button>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

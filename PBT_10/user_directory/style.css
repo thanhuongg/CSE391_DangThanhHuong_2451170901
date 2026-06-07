@@ -1,0 +1,110 @@
+/* User Directory — Đặng Thanh Hưởng 66KTPM1 */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { font-family: Arial, sans-serif; background: #f1f5f9; min-height: 100vh; color: #1e293b; }
+
+.app { max-width: 1100px; margin: 0 auto; padding: 24px 20px; }
+
+/* HEADER */
+.header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.header h1 { font-size: 1.6rem; }
+.subtitle  { color: #64748b; font-size: 0.8rem; margin-top: 2px; }
+
+/* BUTTONS */
+.btn { padding: 9px 18px; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: filter 0.2s, transform 0.15s; }
+.btn:hover  { filter: brightness(1.1); transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn-primary { background: #2563eb; color: white; }
+.btn-danger  { background: #dc2626; color: white; }
+.btn-ghost   { background: transparent; color: #64748b; border: 1px solid #e2e8f0; }
+.btn-sm      { padding: 5px 12px; font-size: 0.8rem; border-radius: 6px; }
+
+/* TOOLBAR */
+.toolbar { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.search-input { flex: 1; padding: 11px 16px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 0.9rem; background: white; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+.search-input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+.user-count  { color: #64748b; font-size: 0.85rem; white-space: nowrap; }
+
+/* USER GRID */
+.user-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+
+/* USER CARD */
+.user-card {
+    background: white; border-radius: 14px; padding: 20px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.user-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); transform: translateY(-2px); }
+
+.card-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+
+.avatar {
+    width: 50px; height: 50px; border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white; font-size: 1.3rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+
+.card-info { flex: 1; overflow: hidden; }
+.card-name { font-weight: 700; font-size: 1rem; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-username { color: #64748b; font-size: 0.82rem; }
+
+.card-detail { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: #475569; margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-detail span:first-child { flex-shrink: 0; }
+
+.card-actions { display: flex; gap: 8px; margin-top: 14px; border-top: 1px solid #f1f5f9; padding-top: 12px; }
+
+/* SKELETON LOADER */
+.loading-bar { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-top: 16px; }
+
+.skeleton-card {
+    height: 180px; background: white; border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+/* EMPTY STATE */
+.empty-state { text-align: center; padding: 60px 20px; color: #64748b; grid-column: 1/-1; }
+.empty-state .icon { font-size: 3rem; margin-bottom: 12px; }
+
+/* TOAST */
+.toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+.toast {
+    padding: 12px 18px; border-radius: 10px; color: white; font-size: 0.88rem; font-weight: 500;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2); min-width: 220px;
+    animation: slideIn 0.25s ease;
+}
+@keyframes slideIn { from { opacity: 0; transform: translateX(30px); } }
+.toast-success { background: #16a34a; }
+.toast-error   { background: #dc2626; }
+.toast-info    { background: #2563eb; }
+
+/* MODAL */
+.modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1000; padding: 20px;
+    animation: fadeIn 0.15s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } }
+
+.modal { background: white; border-radius: 16px; width: 100%; max-width: 480px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+.modal-sm { max-width: 360px; }
+
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid #e2e8f0; }
+.modal-header h2 { font-size: 1.1rem; }
+.modal-close { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #64748b; padding: 4px 8px; border-radius: 6px; }
+.modal-close:hover { background: #f1f5f9; }
+
+.modal-body { padding: 20px 24px; }
+.modal-footer { display: flex; justify-content: flex-end; gap: 10px; padding: 16px 24px; border-top: 1px solid #e2e8f0; }
+
+.form-group { margin-bottom: 14px; }
+.form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: #475569; margin-bottom: 5px; }
+.form-group input { width: 100%; padding: 10px 13px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+.form-group input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
