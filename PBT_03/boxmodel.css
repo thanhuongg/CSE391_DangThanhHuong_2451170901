@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 { font-size: 1.8em; margin-bottom: 6px; color: #1a1a2e; }
+h2 { font-size: 1.3em; margin: 30px 0 10px; color: #16213e; border-bottom: 2px solid #2563eb; padding-bottom: 6px; }
+h3 { font-size: 1.1em; margin-bottom: 8px; }
+p { margin-bottom: 8px; }
+code { background: #f0f0f0; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
+
+/* ====== PHẦN 1: content-box vs border-box ====== */
+.demo-row {
+    display: flex;
+    gap: 30px;
+    margin: 20px 0;
+    align-items: flex-start;
+}
+
+.box {
+    padding: 20px;
+    border: 5px solid #2563eb;
+    background: #dbeafe;
+    color: #1e3a8a;
+    text-align: center;
+}
+
+/* Hộp 1: mặc định content-box — rộng thực = 350px */
+.box-content {
+    width: 300px;
+    box-sizing: content-box; /* mặc định, viết rõ để demo */
+    background: #fef3c7;
+    border-color: #d97706;
+    color: #78350f;
+}
+
+/* Hộp 2: border-box — rộng thực = 300px */
+.box-border {
+    width: 300px;
+    box-sizing: border-box;
+    background: #d1fae5;
+    border-color: #059669;
+    color: #064e3b;
+}
+
+.box p { font-weight: bold; font-size: 1.1em; margin-bottom: 8px; }
+.box small { font-size: 0.82em; }
+
+/* ====== PHẦN 2: Layout 3 cột ====== */
+.container-1000 {
+    width: 1000px;
+    display: flex;
+    border: 2px dashed #94a3b8;
+    margin: 20px 0;
+}
+
+.sidebar-left,
+.sidebar-right {
+    width: 250px;
+    flex-shrink: 0;
+    padding: 15px;
+    background: #f0f4ff;
+    border: 1px solid #c7d2fe;
+    text-align: center;
+    color: #3730a3;
+}
+
+.content-main {
+    width: 500px;
+    flex-shrink: 0;
+    padding: 20px;
+    background: #fff;
+    border-left: 1px solid #c7d2fe;
+    border-right: 1px solid #c7d2fe;
+    text-align: center;
+    color: #1e293b;
+}
+
+/* ====== PHẦN 3: Margin Collapse ====== */
+.margin-a {
+    background: #fef9c3;
+    border: 2px solid #eab308;
+    padding: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.margin-b {
+    background: #dbeafe;
+    border: 2px solid #2563eb;
+    padding: 15px;
+    margin-top: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ====== EXPLANATION BOX ====== */
+.explanation {
+    background: #f8fafc;
+    border-left: 4px solid #64748b;
+    padding: 14px 18px;
+    margin: 16px 0 24px;
+    border-radius: 0 6px 6px 0;
+}
+
+.explanation ul { padding-left: 20px; }
+.explanation li { margin-bottom: 8px; }

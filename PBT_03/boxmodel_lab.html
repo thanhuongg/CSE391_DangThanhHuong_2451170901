@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model Lab — Đặng Thanh Hưởng 66KTPM1</title>
+    <link rel="stylesheet" href="boxmodel.css">
+</head>
+<body>
+
+    <h1>Box Model Lab</h1>
+    <p>Bài làm: Đặng Thanh Hưởng — 66KTPM1</p>
+
+    <h2>Phần 1 — content-box vs border-box</h2>
+    <p>Cả 2 hộp đều có: <code>width: 300px; padding: 20px; border: 5px solid</code></p>
+
+    <div class="demo-row">
+        <div class="box box-content">
+            <p>content-box</p>
+            <small>Chiều rộng thực = 300 + 40 + 10 = <strong>350px</strong></small>
+        </div>
+        <div class="box box-border">
+            <p>border-box</p>
+            <small>Chiều rộng thực = <strong>300px</strong> (đã gộp padding + border)</small>
+        </div>
+    </div>
+
+    <div class="explanation">
+        <h3>Giải thích từ DevTools:</h3>
+        <ul>
+            <li><strong>Hộp 1 (content-box):</strong> width: 300px nhưng chiều rộng thực = 350px
+                <br>= 300 (content) + 20×2 (padding) + 5×2 (border)</li>
+            <li><strong>Hộp 2 (border-box):</strong> width: 300px và chiều rộng thực = 300px
+                <br>Content thực = 300 - 40 - 10 = 250px</li>
+        </ul>
+    </div>
+
+    <h2>Phần 2 — Layout 3 cột trong container 1000px</h2>
+    <p>Dùng <code>box-sizing: border-box</code> để tổng = đúng 1000px</p>
+
+    <div class="container-1000">
+        <div class="sidebar-left">
+            <p>Sidebar trái<br>250px</p>
+        </div>
+        <div class="content-main">
+            <p>Content chính<br>500px</p>
+        </div>
+        <div class="sidebar-right">
+            <p>Sidebar phải<br>250px</p>
+        </div>
+    </div>
+
+    <div class="explanation">
+        <h3>Tại sao cần border-box:</h3>
+        <p>Không có border-box: 250 + 500 + 250 = 1000px nhưng chưa tính padding.</p>
+        <p>Với padding: 15px × 2 × 2 (sidebar) + 20px × 2 (content) = 100px thêm → tổng = 1100px → vỡ layout!</p>
+        <p>Với <code>box-sizing: border-box</code>: padding nằm bên trong width → tổng luôn = 1000px.</p>
+    </div>
+
+    <h2>Phần 3 — Margin Collapse Demo</h2>
+    <div class="margin-a">
+        Box A — margin-bottom: 30px
+    </div>
+    <div class="margin-b">
+        Box B — margin-top: 50px
+    </div>
+    <div class="explanation">
+        <p>Khoảng cách giữa Box A và Box B = <strong>50px</strong> (không phải 80px)</p>
+        <p>Margin collapse: hai margin dọc liền kề sẽ "hợp nhất" thành giá trị lớn hơn, không cộng lại.</p>
+    </div>
+
+</body>
+</html>
