@@ -1,0 +1,178 @@
+/* Weather App — Đặng Thanh Hưởng 66KTPM1 */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 40%, #2563eb 100%);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 30px 16px;
+}
+
+.app {
+    width: 100%;
+    max-width: 520px;
+}
+
+/* HEADER */
+.app-header { text-align: center; margin-bottom: 24px; color: white; }
+.app-header h1 { font-size: 2rem; letter-spacing: 1px; }
+.author { font-size: 0.8rem; opacity: 0.7; margin-top: 4px; }
+
+/* SEARCH */
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 14px 18px;
+    border: none;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    background: rgba(255,255,255,0.95);
+    color: #1e293b;
+    outline: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.search-box input:focus { box-shadow: 0 4px 20px rgba(0,0,0,0.25), 0 0 0 3px rgba(255,255,255,0.4); }
+.search-box input::placeholder { color: #94a3b8; }
+
+.search-box button {
+    padding: 14px 22px;
+    background: #f59e0b;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: filter 0.2s, transform 0.15s;
+}
+
+.search-box button:hover  { filter: brightness(1.1); transform: translateY(-1px); }
+.search-box button:active { transform: translateY(0); filter: brightness(0.95); }
+
+/* HISTORY */
+.history-box {
+    margin-bottom: 14px;
+}
+
+.history-label { color: rgba(255,255,255,0.7); font-size: 0.8rem; margin-bottom: 8px; }
+
+.history-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.history-tag {
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.18);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.history-tag:hover { background: rgba(255,255,255,0.3); }
+
+/* STATE CONTAINER */
+.state-container {
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 32px 28px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.state { width: 100%; text-align: center; }
+
+/* IDLE */
+.state-idle .idle-icon { font-size: 3.5rem; margin-bottom: 12px; }
+.state-idle p { color: #64748b; }
+
+/* LOADING */
+.spinner {
+    width: 44px; height: 44px;
+    border: 4px solid #e2e8f0;
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 14px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.state-loading p { color: #64748b; }
+
+/* ERROR */
+.state-error .error-icon { font-size: 3rem; margin-bottom: 10px; }
+#errorMsg { color: #dc2626; font-weight: 500; margin-bottom: 16px; }
+.retry-btn {
+    padding: 10px 24px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: filter 0.2s;
+}
+.retry-btn:hover { filter: brightness(1.15); }
+
+/* SUCCESS — WEATHER CARD */
+.weather-card { width: 100%; }
+
+.weather-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 4px;
+}
+
+.weather-icon { font-size: 4rem; line-height: 1; }
+
+.city-name   { font-size: 1.5rem; font-weight: 700; color: #1e293b; }
+.weather-desc { color: #64748b; text-transform: capitalize; margin-top: 2px; }
+
+.weather-temp {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #1e40af;
+    margin: 12px 0;
+    letter-spacing: -2px;
+}
+
+.weather-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.detail-item {
+    background: #f0f4ff;
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detail-icon  { font-size: 1.2rem; }
+.detail-label { font-size: 0.78rem; color: #64748b; flex: 1; }
+.detail-value { font-size: 0.9rem; font-weight: 600; color: #1e293b; }
+
+.update-time {
+    text-align: right;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-top: 14px;
+}

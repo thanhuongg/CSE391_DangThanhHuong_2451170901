@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App — Đặng Thanh Hưởng 66KTPM1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="app-header">
+            <h1>🌤️ Thời Tiết</h1>
+            <p class="author">Đặng Thanh Hưởng — 66KTPM1</p>
+        </header>
+
+        <!-- Search -->
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Nhập tên thành phố (vd: Hanoi, Ho Chi Minh)..." autocomplete="off">
+            <button id="searchBtn">🔍 Tìm</button>
+        </div>
+
+        <!-- History -->
+        <div class="history-box" id="historyBox" style="display:none">
+            <p class="history-label">🕘 Tìm kiếm gần đây:</p>
+            <div class="history-tags" id="historyTags"></div>
+        </div>
+
+        <!-- States -->
+        <div class="state-container" id="stateContainer">
+
+            <!-- Idle -->
+            <div class="state state-idle" id="stateIdle">
+                <div class="idle-icon">🌍</div>
+                <p>Nhập tên thành phố để xem thời tiết</p>
+            </div>
+
+            <!-- Loading -->
+            <div class="state state-loading" id="stateLoading" style="display:none">
+                <div class="spinner"></div>
+                <p>Đang tải thời tiết...</p>
+            </div>
+
+            <!-- Error -->
+            <div class="state state-error" id="stateError" style="display:none">
+                <div class="error-icon">⚠️</div>
+                <p id="errorMsg">Không tìm thấy thành phố</p>
+                <button class="retry-btn" id="retryBtn">Thử lại</button>
+            </div>
+
+            <!-- Success -->
+            <div class="state state-success" id="stateSuccess" style="display:none">
+                <div class="weather-card">
+                    <div class="weather-top">
+                        <div class="weather-icon" id="weatherIcon">☀️</div>
+                        <div class="weather-main">
+                            <h2 class="city-name" id="cityName">Hà Nội</h2>
+                            <p class="weather-desc" id="weatherDesc">Nắng</p>
+                        </div>
+                    </div>
+                    <div class="weather-temp" id="weatherTemp">28°C</div>
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">💧</span>
+                            <span class="detail-label">Độ ẩm</span>
+                            <span class="detail-value" id="humidity">75%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">💨</span>
+                            <span class="detail-label">Gió</span>
+                            <span class="detail-value" id="windspeed">12 km/h</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🌡️</span>
+                            <span class="detail-label">Cảm giác</span>
+                            <span class="detail-value" id="feelsLike">26°C</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">👁️</span>
+                            <span class="detail-label">Tầm nhìn</span>
+                            <span class="detail-value" id="visibility">10 km</span>
+                        </div>
+                    </div>
+                    <p class="update-time" id="updateTime"></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
