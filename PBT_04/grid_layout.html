@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout — Đặng Thanh Hưởng 66KTPM1</title>
+    <link rel="stylesheet" href="css/grid.css">
+</head>
+<body>
+
+    <h1>CSS Grid Layout Lab</h1>
+    <p class="author">Đặng Thanh Hưởng — 66KTPM1</p>
+
+    <!-- ====== PHẦN 1: TRANG BÁO ====== -->
+    <h2>Phần 1 — Magazine Layout (grid-template-areas)</h2>
+    <div class="magazine">
+        <header class="mag-header">
+            <span>📰 TinTechVN</span>
+            <span>Công nghệ — Lập trình — Khởi nghiệp</span>
+        </header>
+        <nav class="mag-nav">
+            <a href="#">Trang chủ</a>
+            <a href="#">Công nghệ</a>
+            <a href="#">AI</a>
+            <a href="#">Lập trình</a>
+            <a href="#">Review</a>
+        </nav>
+        <article class="mag-hero">
+            <h2>Apple ra mắt MacBook Pro M4 — Hiệu năng tăng gấp đôi</h2>
+            <p>Chip M4 Pro mang đến hiệu năng đột phá với CPU 14 nhân và GPU 20 nhân, phù hợp cho các tác vụ video 8K và machine learning.</p>
+            <p>Thời lượng pin lên tới 24 giờ làm việc liên tục, trọng lượng chỉ 1.63kg…</p>
+        </article>
+        <aside class="mag-sidebar">
+            <h3>Tin liên quan</h3>
+            <ul>
+                <li><a href="#">iPhone 17 sẽ có camera periscope 5x</a></li>
+                <li><a href="#">Vision Pro 2 ra mắt 2026</a></li>
+                <li><a href="#">Apple Intelligence cập nhật tính năng mới</a></li>
+            </ul>
+            <h3 style="margin-top:16px;">Thẻ phổ biến</h3>
+            <div class="tags">
+                <span>#Apple</span><span>#MacBook</span><span>#M4</span><span>#Laptop</span>
+            </div>
+        </aside>
+        <section class="mag-sub">
+            <div class="sub-card">
+                <h4>Samsung Galaxy S25 Ultra</h4>
+                <p>200MP camera, Snapdragon 8 Elite, pin 5000mAh...</p>
+            </div>
+            <div class="sub-card">
+                <h4>Google Pixel 9 Pro XL ra mắt</h4>
+                <p>AI-native features, Tensor G5 chip, 7 năm update...</p>
+            </div>
+            <div class="sub-card">
+                <h4>NVIDIA RTX 5090 — Đánh giá</h4>
+                <p>Blackwell architecture, 32GB GDDR7, hiệu năng AI vượt trội...</p>
+            </div>
+        </section>
+        <footer class="mag-footer">
+            © 2026 TinTechVN — Liên hệ: tintechvn@gmail.com
+        </footer>
+    </div>
+
+    <!-- ====== PHẦN 2: GALLERY ====== -->
+    <h2>Phần 2 — Photo Gallery (auto-fill + minmax)</h2>
+    <div class="gallery">
+        <div class="gallery-item gallery-wide">
+            <span>🏙️ Hà Nội về đêm</span>
+        </div>
+        <div class="gallery-item">
+            <span>🌅 Hoàng hôn Đà Lạt</span>
+        </div>
+        <div class="gallery-item">
+            <span>🏖️ Bãi biển Phú Quốc</span>
+        </div>
+        <div class="gallery-item gallery-tall">
+            <span>🏯 Phố cổ Hội An</span>
+        </div>
+        <div class="gallery-item">
+            <span>🌊 Vịnh Hạ Long</span>
+        </div>
+        <div class="gallery-item">
+            <span>🌿 Ruộng bậc thang Sapa</span>
+        </div>
+        <div class="gallery-item">
+            <span>🕌 Nhà thờ Đức Bà</span>
+        </div>
+        <div class="gallery-item">
+            <span>⛩️ Chùa Thiên Mụ, Huế</span>
+        </div>
+    </div>
+
+    <!-- ====== PHẦN 3: GRID vs FLEXBOX ====== -->
+    <h2>Phần 3 — Khi nào dùng Grid? Khi nào dùng Flexbox?</h2>
+    <div class="compare-grid">
+        <div class="compare-card grid-card">
+            <h3>✅ Dùng CSS Grid khi:</h3>
+            <ul>
+                <li>Layout <strong>2 chiều</strong> (hàng và cột đồng thời)</li>
+                <li>Bố cục trang toàn trang (header/sidebar/main/footer)</li>
+                <li>Photo gallery, calendar, dashboard</li>
+                <li>Items cần đặt chính xác theo hàng/cột</li>
+                <li>Tạo layout phức tạp không đều nhau</li>
+            </ul>
+        </div>
+        <div class="compare-card flex-card">
+            <h3>✅ Dùng Flexbox khi:</h3>
+            <ul>
+                <li>Layout <strong>1 chiều</strong> (chỉ hàng hoặc chỉ cột)</li>
+                <li>Navbar, tab bar, button group</li>
+                <li>Căn giữa 1 element trong container</li>
+                <li>Danh sách items có kích thước linh hoạt</li>
+                <li>Component nhỏ bên trong một phần của trang</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
