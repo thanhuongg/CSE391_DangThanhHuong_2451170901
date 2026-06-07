@@ -1,0 +1,57 @@
+/* ============================================
+   Specificity Battle — 10 rules từ thấp đến cao
+   Đặng Thanh Hưởng — 66KTPM1
+   ============================================ */
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+h1 { color: #1a1a2e; margin-bottom: 6px; }
+h2 { color: #16213e; margin-top: 24px; border-bottom: 2px solid #2563eb; padding-bottom: 4px; }
+code { background: #f0f0f0; padding: 2px 6px; border-radius: 3px; }
+
+/* Rule 1: Specificity (0,0,1) = 1 điểm */
+p { color: black; }
+
+/* Rule 3: Specificity (0,1,0) = 10 điểm */
+.text { color: blue; }
+
+/* Rule 4: Specificity (0,1,0) = 10 điểm — cùng specificity với rule 3, rule này sau nên thắng */
+.highlight { color: orange; }
+
+/* Rule 2: Specificity (0,1,1) = 11 điểm */
+p.text { color: teal; }
+
+/* Rule 5: Specificity (0,2,0) = 20 điểm */
+.text.highlight { color: purple; }
+
+/* Rule 6: Specificity (0,2,1) = 21 điểm */
+p.text.highlight { color: green; }
+
+/* Rule 7: Specificity (1,0,0) = 100 điểm */
+#demo { color: red; }
+
+/* Rule 8: Specificity (1,1,0) = 110 điểm */
+#demo.text { color: crimson; }
+
+/* Rule 10: Specificity (1,2,0) = 120 điểm — CAO NHẤT, thắng tất cả */
+#demo.text.highlight { color: darkred; }
+
+/* ========== Demo element styling ========== */
+#demo {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 16px 24px;
+    background: #fafafa;
+    border: 2px dashed #999;
+    border-radius: 8px;
+    margin: 16px 0;
+    display: inline-block;
+}

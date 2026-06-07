@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specificity Battle — Đặng Thanh Hưởng 66KTPM1</title>
+    <link rel="stylesheet" href="specificity.css">
+</head>
+<body>
+    <h1>Specificity Battle</h1>
+    <p>Bài làm: Đặng Thanh Hưởng — 66KTPM1</p>
+
+    <p>Element target: <code>&lt;p id="demo" class="text highlight"&gt;</code></p>
+
+    <!-- Element chính dùng để demo specificity -->
+    <p id="demo" class="text highlight">Hello World — màu cuối cùng do rule cao nhất quyết định</p>
+
+    <h2>Bảng tất cả 10 rules theo thứ tự specificity tăng dần</h2>
+    <table border="1" style="border-collapse:collapse; width:100%; margin-top:12px;">
+        <thead>
+            <tr style="background:#f0f4ff;">
+                <th style="padding:8px;">Rule</th>
+                <th style="padding:8px;">Selector</th>
+                <th style="padding:8px;">Specificity (a,b,c)</th>
+                <th style="padding:8px;">Color</th>
+                <th style="padding:8px;">Điểm</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td style="padding:8px;">1</td><td><code>p</code></td><td>(0,0,1)</td><td>Black</td><td>1</td></tr>
+            <tr><td style="padding:8px;">2</td><td><code>p.text</code></td><td>(0,1,1)</td><td>Teal</td><td>11</td></tr>
+            <tr><td style="padding:8px;">3</td><td><code>.text</code></td><td>(0,1,0)</td><td>Blue</td><td>10</td></tr>
+            <tr><td style="padding:8px;">4</td><td><code>.highlight</code></td><td>(0,1,0)</td><td>Orange</td><td>10</td></tr>
+            <tr><td style="padding:8px;">5</td><td><code>.text.highlight</code></td><td>(0,2,0)</td><td>Purple</td><td>20</td></tr>
+            <tr><td style="padding:8px;">6</td><td><code>p.text.highlight</code></td><td>(0,2,1)</td><td>Green</td><td>21</td></tr>
+            <tr><td style="padding:8px;">7</td><td><code>#demo</code></td><td>(1,0,0)</td><td>Red</td><td>100</td></tr>
+            <tr><td style="padding:8px;">8</td><td><code>#demo.text</code></td><td>(1,1,0)</td><td>Crimson</td><td>110</td></tr>
+            <tr><td style="padding:8px;">9</td><td><code>#demo p.text</code></td><td>Không khớp — không chọn được element</td><td>—</td><td>—</td></tr>
+            <tr><td style="padding:8px;">10</td><td><code>#demo.text.highlight</code></td><td>(1,2,0)</td><td>DarkRed (thắng)</td><td>120</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Kết luận</h2>
+    <p>
+        Element hiển thị màu <strong>DarkRed</strong> vì rule <code>#demo.text.highlight</code>
+        có specificity cao nhất (1,2,0) = 120 điểm.
+    </p>
+
+    <h2>Thay đổi thứ tự CSS có làm đổi kết quả không?</h2>
+    <p>
+        <strong>Không</strong>, vì tất cả 10 rules target cùng 1 element với specificity khác nhau.
+        Specificity cao hơn luôn thắng, bất kể thứ tự trong file CSS.
+        <br>
+        <strong>Ngoại lệ:</strong> Nếu 2 rules có <em>cùng specificity</em> (ví dụ rule 3 và 4 đều là 0,1,0),
+        rule nào viết <em>sau</em> trong file CSS sẽ thắng (cascade tie-breaking).
+    </p>
+</body>
+</html>
