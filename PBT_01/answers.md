@@ -109,3 +109,223 @@ Câu B4:
 
 - Thẻ `<form>` này không có thuộc tính `action` và `method`.                
 - Form này chỉ sử dụng duy nhất một loại là: `<input type="hidden">`.
+
+PHẦN C — SUY LUẬN
+
+Câu C1 (10đ) — Thiết kế cấu trúc HTML trang chi tiết sản phẩm
+
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 16 Pro — ShopTLU</title>
+</head>
+<body>
+
+    <header> <!-- header vì đây là phần đầu trang, chứa logo và điều hướng chính -->
+        <nav aria-label="navigation chính"> <!-- nav vì chứa các liên kết điều hướng chính -->
+            <a href="/">ShopTLU</a>
+            <a href="/products">Sản phẩm</a>
+            <a href="/cart">Giỏ hàng</a>
+        </nav>
+    </header>
+
+    <main> <!-- main vì đây là vùng nội dung chính, duy nhất trên trang -->
+
+        <nav aria-label="breadcrumb"> <!-- nav vì breadcrumb là một dạng điều hướng phụ -->
+            <ol> <!-- ol vì breadcrumb có thứ tự: trang chủ → danh mục → sản phẩm -->
+                <li><a href="/">Trang chủ</a></li>
+                <li><a href="/phones">Điện thoại</a></li>
+                <li aria-current="page">iPhone 16 Pro</li>
+            </ol>
+        </nav>
+
+        <article> <!-- article vì trang chi tiết sản phẩm là nội dung độc lập, có thể tái sử dụng -->
+
+            <section aria-label="Ảnh sản phẩm"> <!-- section nhóm khu vực ảnh, có label mô tả -->
+                <figure> <!-- figure vì ảnh sản phẩm đi kèm figcaption mô tả -->
+                    <img src="iphone16pro-1.jpg" alt="iPhone 16 Pro màu Titan Tự nhiên - mặt trước" loading="lazy">
+                    <figcaption>iPhone 16 Pro — Titan Tự nhiên</figcaption>
+                </figure>
+                <figure>
+                    <img src="iphone16pro-2.jpg" alt="iPhone 16 Pro - mặt sau với cụm camera 48MP" loading="lazy">
+                    <figcaption>Cụm camera 48MP Fusion</figcaption>
+                </figure>
+                <!-- ... thêm 3 ảnh nữa ... -->
+            </section>
+
+            <section aria-label="Thông tin sản phẩm"> <!-- section nhóm thông tin: tên, giá, đánh giá -->
+                <h1>iPhone 16 Pro</h1> <!-- h1 vì đây là tiêu đề chính của trang, chỉ có 1 h1 -->
+
+                <p> <!-- p cho giá — đây là đoạn văn, không cần thẻ đặc biệt -->
+                    <strong>25.990.000đ</strong> <!-- strong vì giá là thông tin quan trọng nhất -->
+                </p>
+
+                <p aria-label="Đánh giá sao"> <!-- p cho rating -->
+                    ⭐⭐⭐⭐⭐ (4.9 / 5 — 1.234 đánh giá)
+                </p>
+
+                <p>Chip A18 Pro, Camera 48MP, Pin cả ngày, Titanium.</p> <!-- p cho mô tả ngắn -->
+            </section>
+
+            <section aria-label="Thông số kỹ thuật"> <!-- section riêng vì thông số là nhóm nội dung độc lập -->
+                <h2>Thông số kỹ thuật</h2> <!-- h2 vì là tiêu đề cấp 2 trong article -->
+                <table> <!-- table vì đây là dữ liệu dạng bảng: tên thông số — giá trị -->
+                    <caption>Cấu hình chi tiết iPhone 16 Pro</caption> <!-- caption mô tả nội dung bảng cho accessibility -->
+                    <thead>
+                        <tr>
+                            <th scope="col">Thông số</th>
+                            <th scope="col">Chi tiết</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Chip</td><td>Apple A18 Pro</td></tr>
+                        <tr><td>RAM</td><td>8GB</td></tr>
+                        <tr><td>Bộ nhớ</td><td>256GB / 512GB / 1TB</td></tr>
+                        <tr><td>Màn hình</td><td>6.3" Super Retina XDR, 120Hz</td></tr>
+                        <tr><td>Camera</td><td>48MP Fusion + 12MP Ultra Wide + 12MP Telephoto</td></tr>
+                        <tr><td>Pin</td><td>~27 giờ phát video</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section aria-label="Đánh giá khách hàng"> <!-- section riêng vì đây là nhóm nội dung bình luận -->
+                <h2>Đánh giá từ khách hàng</h2>
+
+                <article> <!-- article vì mỗi bình luận là nội dung độc lập, có thể hiển thị riêng -->
+                    <header> <!-- header trong article chứa thông tin tác giả, ngày đăng -->
+                        <strong>Nguyễn Văn A</strong>
+                        <time datetime="2026-05-10">10 tháng 5, 2026</time>
+                    </header>
+                    <p>Máy đẹp, hiệu năng mạnh, camera xuất sắc!</p>
+                </article>
+
+                <article>
+                    <header>
+                        <strong>Trần Thị B</strong>
+                        <time datetime="2026-05-15">15 tháng 5, 2026</time>
+                    </header>
+                    <p>Pin trâu hơn hẳn đời trước, rất hài lòng.</p>
+                </article>
+            </section>
+
+        </article>
+
+    </main>
+
+    <aside aria-label="Sản phẩm tương tự"> <!-- aside vì đây là nội dung liên quan nhưng phụ, không phải trọng tâm -->
+        <h2>Sản phẩm tương tự</h2>
+        <article>
+            <h3><a href="/products/samsung-s24">Samsung Galaxy S24</a></h3>
+            <p><strong>22.990.000đ</strong></p>
+        </article>
+        <article>
+            <h3><a href="/products/pixel9">Google Pixel 9</a></h3>
+            <p><strong>19.990.000đ</strong></p>
+        </article>
+    </aside>
+
+    <footer> <!-- footer cho toàn trang, chứa copyright và liên kết phụ -->
+        <nav aria-label="Liên kết footer"> <!-- nav vì chứa liên kết điều hướng -->
+            <a href="/policy">Chính sách</a>
+            <a href="/contact">Liên hệ</a>
+            <a href="/faq">FAQ</a>
+        </nav>
+        <p><small>&copy; 2026 ShopTLU. All rights reserved.</small></p>
+    </footer>
+
+</body>
+</html>
+```
+
+**Giải thích lựa chọn thẻ tổng quan:**
+
+- Dùng `<article>` bao toàn bộ nội dung sản phẩm vì trang chi tiết sản phẩm là nội dung độc lập (có thể xuất/nhúng sang trang khác mà vẫn có nghĩa).
+- Dùng `<section>` để phân chia từng vùng chức năng bên trong article (ảnh / thông tin / thông số / bình luận), mỗi section có `aria-label` mô tả rõ.
+- Dùng `<aside>` cho sản phẩm tương tự vì đây là nội dung phụ, bổ trợ, không phải nội dung chính của trang.
+- Dùng `<article>` lồng trong section bình luận vì mỗi bình luận là nội dung độc lập có tác giả, ngày đăng, nội dung riêng.
+- Dùng `<nav>` cho cả breadcrumb lẫn header vì cả hai đều là điều hướng, phân biệt bằng `aria-label`.
+
+---
+
+### Câu C2 (10đ) — Phản biện "dùng `<div>` cho mọi thứ"
+
+Quan điểm của đồng nghiệp thoạt nhìn có vẻ tiết kiệm thời gian, nhưng thực tế lại tạo ra nhiều vấn đề kỹ thuật nghiêm trọng về lâu dài.
+
+**Lý do kỹ thuật 1 — SEO (Tối ưu hóa công cụ tìm kiếm):**
+
+Google crawler đọc HTML để hiểu cấu trúc nội dung trang web. Khi dùng `<h1>`, `<article>`, `<nav>`, `<main>`, crawler biết chính xác phần nào là tiêu đề chính, phần nào là nội dung bài viết, phần nào là điều hướng. Còn khi dùng toàn `<div class="header">`, `<div class="content">`, crawler chỉ thấy một loạt khối không có ý nghĩa — nó phải đoán, và đoán sai nghĩa là trang bị xếp hạng thấp hơn. Thực tế, Google đã công khai xác nhận rằng thẻ semantic như `<article>` và heading hierarchy giúp Googlebot hiểu nội dung trang tốt hơn đáng kể.
+
+**Lý do kỹ thuật 2 — Accessibility (Khả năng tiếp cận):**
+
+Người dùng khiếm thị sử dụng screen reader (phần mềm đọc màn hình như NVDA, JAWS). Screen reader dựa vào thẻ semantic để tạo "bản đồ trang" (document outline), cho phép người dùng nhảy thẳng đến `<main>`, `<nav>`, hay từng `<section>` bằng phím tắt. Nếu toàn bộ trang là `<div>`, screen reader không thể phân biệt được menu, nội dung chính hay chú thích — người dùng khiếm thị phải nghe đọc toàn bộ trang từ đầu đến cuối mới tìm được thứ cần. Đây không chỉ là bất tiện mà còn là vi phạm WCAG 2.1 — tiêu chuẩn accessibility bắt buộc của nhiều quốc gia.
+
+**Ví dụ cụ thể chứng minh:**
+
+Giả sử mình có đoạn navigation sau:
+
+```html
+<!-- Dùng div: screen reader không biết đây là navigation -->
+<div class="nav">
+    <div><a href="/">Trang chủ</a></div>
+    <div><a href="/products">Sản phẩm</a></div>
+</div>
+
+<!-- Dùng nav: screen reader thông báo "navigation landmark" -->
+<nav aria-label="navigation chính">
+    <a href="/">Trang chủ</a>
+    <a href="/products">Sản phẩm</a>
+</nav>
+```
+
+Với `<nav>`, NVDA sẽ thông báo "navigation chính, danh sách 2 mục", người dùng khiếm thị biết ngay đây là menu và có thể skip qua bằng phím `D`. Với `<div>`, họ không biết đây là gì và không thể skip.
+
+**Trường hợp `<div>` vẫn phù hợp:**
+
+`<div>` hoàn toàn hợp lệ khi cần một container thuần CSS/layout mà không mang ý nghĩa ngữ nghĩa nào. Ví dụ: một `<div class="flex-container">` dùng để bố cục flexbox cho nhóm card, hay `<div class="overlay">` cho lớp phủ tối khi mở modal — đây là các container "vô nghĩa" thuần CSS, dùng `<div>` là đúng vì không có thẻ semantic nào phù hợp hơn. Nếu ép dùng thẻ khác (như `<section>`) cho những trường hợp này sẽ tạo ra cấu trúc sai ngữ nghĩa.
+
+**Kết luận:** Semantic HTML không tốn thêm thời gian đáng kể khi đã quen, nhưng lợi ích mang lại — SEO tốt hơn, accessibility đúng chuẩn, code dễ đọc hơn cho cả người và máy — là không thể phủ nhận. Tiết kiệm vài phút hôm nay để lại khoản nợ kỹ thuật nghiêm trọng về sau.
+
+---
+
+Danh sách lỗi Bài B3 (debug.html)
+
+```
+Lỗi 1: Dòng 1 — <!DOCTYPE> thiếu "html"
+Sửa: <!DOCTYPE html>
+
+Lỗi 2: Dòng 2 — <html> thiếu thuộc tính lang
+Sửa: <html lang="vi">
+
+Lỗi 3: Dòng 4 — <title>Trang web không có thẻ đóng </title>
+Sửa: <title>Trang web ShopTLU</title>
+
+Lỗi 4: Dòng 5 — <meta charset="utf8"> sai giá trị (phải là "UTF-8")
+Sửa: <meta charset="UTF-8">
+
+Lỗi 5: Dòng 8 — <h1>Welcome to ShopTLU<h1> — thẻ đóng sai (thiếu dấu /)
+Sửa: <h1>Welcome to ShopTLU</h1>
+
+Lỗi 6: Dòng 11 — <a href="home"> — href thiếu dấu / (là relative path, trỏ sai)
+Sửa: <a href="/home">
+
+Lỗi 7: Dòng 11 — <a href="home">Trang chủ<a> — thẻ đóng sai (thiếu dấu /)
+Sửa: <a href="/home">Trang chủ</a>
+
+Lỗi 8: Dòng 18 — <img src=iphone.jpg> — src không có dấu nháy
+Sửa: <img src="iphone.jpg" alt="iPhone 16 Pro">
+
+Lỗi 9: Dòng 20 — <p>Giá: <b>25.990.000đ</p></b> — đóng thẻ sai thứ tự (b đóng sau p)
+Sửa: <p>Giá: <b>25.990.000đ</b></p>
+
+Lỗi 10: Dòng 31–35 — <table> không có <thead>, dùng <td> cho header thay vì <th>
+Sửa: Thêm <thead><tr><th>Tên</th><th>Giá</th></tr></thead> và bọc dữ liệu trong <tbody>
+
+Lỗi 11: Dòng 39 — Có 2 thẻ <main> — HTML chỉ cho phép 1 <main> trên 1 trang
+Sửa: Đổi thẻ <main> thứ hai thành <aside>
+
+Lỗi 12: Dòng 41 — <p>Copyright 2026 không đóng thẻ </p>
+Sửa: <p>Copyright 2026</p>
+```
