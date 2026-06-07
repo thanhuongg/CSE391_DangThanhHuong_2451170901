@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm chứng Validation — Đặng Thanh Hưởng 66KTPM1</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; }
+        fieldset { margin-bottom: 20px; padding: 16px; border-radius: 8px; }
+        legend { font-weight: bold; font-size: 1.1em; }
+        label { display: block; margin-bottom: 4px; font-size: 0.95em; color: #333; }
+        input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 12px; }
+        button { padding: 10px 24px; background: #2563eb; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .note { background: #fef9c3; border-left: 4px solid #eab308; padding: 10px 14px; border-radius: 4px; margin-bottom: 12px; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <h1>Kiểm chứng HTML5 Validation — Câu A2</h1>
+    <p>Bài làm: Đặng Thanh Hưởng — 66KTPM1</p>
+
+    <form action="#" method="POST">
+
+        <fieldset>
+            <legend>Trường hợp 1 — required + bỏ trống</legend>
+            <div class="note">
+                <strong>Dự đoán:</strong> Trình duyệt chặn submit và hiện popup "Please fill out this field"<br>
+                <strong>Cách kiểm chứng:</strong> Để trống rồi bấm Submit
+            </div>
+            <label for="tc1">Họ tên (required, để trống):</label>
+            <input type="text" id="tc1" name="tc1" required value="">
+        </fieldset>
+
+        <fieldset>
+            <legend>Trường hợp 2 — type="email" sai format</legend>
+            <div class="note">
+                <strong>Dự đoán:</strong> Trình duyệt chặn submit, báo lỗi thiếu @<br>
+                <strong>Cách kiểm chứng:</strong> Giá trị mặc định "abc" đã sai format
+            </div>
+            <label for="tc2">Email (nhập "abc"):</label>
+            <input type="email" id="tc2" name="tc2" value="abc">
+        </fieldset>
+
+        <fieldset>
+            <legend>Trường hợp 3 — type="number" vượt max</legend>
+            <div class="note">
+                <strong>Dự đoán:</strong> Trình duyệt chặn submit, báo giá trị phải ≤ 10<br>
+                <strong>Cách kiểm chứng:</strong> Giá trị 15 vượt quá max="10"
+            </div>
+            <label for="tc3">Số lượng (min=1, max=10, nhập 15):</label>
+            <input type="number" id="tc3" name="tc3" min="1" max="10" value="15">
+        </fieldset>
+
+        <fieldset>
+            <legend>Trường hợp 4 — pattern regex không khớp</legend>
+            <div class="note">
+                <strong>Dự đoán:</strong> Trình duyệt chặn submit, báo không khớp pattern<br>
+                <strong>Cách kiểm chứng:</strong> "abc123" không phải 10 chữ số
+            </div>
+            <label for="tc4">SĐT (pattern 10 chữ số, nhập "abc123"):</label>
+            <input type="text" id="tc4" name="tc4" pattern="[0-9]{10}" value="abc123"
+                   title="Vui lòng nhập đúng 10 chữ số">
+        </fieldset>
+
+        <fieldset>
+            <legend>Trường hợp 5 — password ngắn hơn minlength</legend>
+            <div class="note">
+                <strong>Dự đoán:</strong> Trình duyệt chặn submit, báo cần ≥ 8 ký tự<br>
+                <strong>Cách kiểm chứng:</strong> Giá trị "123" chỉ có 3 ký tự
+            </div>
+            <label for="tc5">Mật khẩu (minlength=8, nhập "123"):</label>
+            <input type="password" id="tc5" name="tc5" minlength="8" value="123">
+        </fieldset>
+
+        <button type="submit">Submit để xem validation</button>
+    </form>
+
+    <hr style="margin: 30px 0;">
+    <h2>Kết quả so sánh</h2>
+    <table border="1" style="border-collapse:collapse; width:100%;">
+        <thead>
+            <tr style="background:#f0f0f0;">
+                <th style="padding:8px;">Trường hợp</th>
+                <th style="padding:8px;">Dự đoán</th>
+                <th style="padding:8px;">Kết quả thực tế</th>
+                <th style="padding:8px;">Khớp?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding:8px;">TH1 — required trống</td>
+                <td style="padding:8px;">Chặn submit, hiện "Please fill out this field"</td>
+                <td style="padding:8px;">Đúng như dự đoán</td>
+                <td style="padding:8px;">✅</td>
+            </tr>
+            <tr>
+                <td style="padding:8px;">TH2 — email "abc"</td>
+                <td style="padding:8px;">Chặn, báo thiếu @</td>
+                <td style="padding:8px;">Đúng, Chrome hiện "Please include an '@' in the email address"</td>
+                <td style="padding:8px;">✅</td>
+            </tr>
+            <tr>
+                <td style="padding:8px;">TH3 — number 15 > max 10</td>
+                <td style="padding:8px;">Chặn, báo vượt max</td>
+                <td style="padding:8px;">Đúng, Chrome hiện "Value must be less than or equal to 10"</td>
+                <td style="padding:8px;">✅</td>
+            </tr>
+            <tr>
+                <td style="padding:8px;">TH4 — pattern sai</td>
+                <td style="padding:8px;">Chặn, báo không khớp pattern</td>
+                <td style="padding:8px;">Đúng, hiện title text đã set</td>
+                <td style="padding:8px;">✅</td>
+            </tr>
+            <tr>
+                <td style="padding:8px;">TH5 — password 3 ký tự</td>
+                <td style="padding:8px;">Chặn, báo cần ≥ 8 ký tự</td>
+                <td style="padding:8px;">Đúng, Chrome hiện "Please lengthen this text to 8 characters or more"</td>
+                <td style="padding:8px;">✅</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
