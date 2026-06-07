@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Scroll Gallery — Đặng Thanh Hưởng 66KTPM1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <h1>🖼️ Photo Gallery</h1>
+        <p class="subtitle">Đặng Thanh Hưởng — 66KTPM1</p>
+        <span class="photo-counter" id="photoCounter">0 ảnh</span>
+    </header>
+
+    <main class="gallery-container" id="galleryContainer"></main>
+
+    <!-- Trigger element: IntersectionObserver theo dõi phần tử này -->
+    <div id="loadTrigger" class="load-trigger"></div>
+
+    <!-- Loading indicator cuối trang -->
+    <div class="load-more-indicator" id="loadMoreIndicator" style="display:none">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <p>Đang tải thêm ảnh...</p>
+    </div>
+
+    <!-- End of content -->
+    <div class="end-message" id="endMessage" style="display:none">
+        <p>🎉 Đã tải hết tất cả ảnh!</p>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" style="display:none">
+        <button class="lightbox-close" id="lightboxClose">✕</button>
+        <button class="lightbox-prev" id="lightboxPrev">‹</button>
+        <button class="lightbox-next" id="lightboxNext">›</button>
+        <div class="lightbox-content">
+            <img class="lightbox-img" id="lightboxImg" src="" alt="">
+            <div class="lightbox-info">
+                <p class="lightbox-title" id="lightboxTitle"></p>
+                <p class="lightbox-meta" id="lightboxMeta"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
