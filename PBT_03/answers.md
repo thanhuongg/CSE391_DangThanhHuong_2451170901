@@ -1,3 +1,5 @@
+PHẦN A — KIỂM TRA ĐỌC HIỂU (25 điểm)
+
 1. Inline CSS
 Cách này nhúng trực tiếp các quy tắc CSS vào trong thuộc tính style của từng thẻ HTML cụ thể.  
 
@@ -131,3 +133,69 @@ câu 4:
 4. Element sẽ có màu đen.
 
 - Giải thích: Mặc dù Rule A (p) có specificity thấp nhất (0, 0, 1), nhưng từ khóa !important không thuộc về thang đo specificity thông thường.!important là một "phá vỡ quy tắc". Khi được sử dụng, nó sẽ ghi đè lên tất cả các khai báo khác, bao gồm cả ID selector và thậm chí là Inline style.
+
+
+PHẦN C — DEBUG & SUY LUẬN (20 điểm)
+
+
+### Câu C1 — Debug `debug_layout.html` (3 lỗi tìm được)
+
+**Lỗi 1: Tổng chiều rộng vượt container**
+```css
+/* Lỗi: */
+.sidebar { width: 300px; padding: 20px; border: 1px solid; float: left; }
+.content { width: 660px; padding: 30px; border: 1px solid; float: left; }
+/* Thực tế: 342px + 722px = 1064px > 1000px → content bị xuống dòng */
+
+/* Sửa — Cách 1: box-sizing */
+.sidebar { box-sizing: border-box; width: 300px; padding: 20px; border: 1px solid; float: left; }
+.content { box-sizing: border-box; width: 660px; padding: 30px; border: 1px solid; float: left; }
+```
+
+**Lỗi 2: Container không bọc được float children**
+```css
+/* Lỗi: sidebar và content đều float left → container có height = 0 */
+.container { width: 1000px; }  /* không có clearfix */
+
+/* Sửa — thêm clearfix: */
+.container::after { content: ""; display: table; clear: both; }
+/* Hoặc dùng: overflow: hidden; trên .container */
+```
+
+**Lỗi 3: `position: relative` thiếu trên container của element `position: absolute`**
+```css
+/* Lỗi: .badge dùng position: absolute nhưng container không có position: relative */
+.card { width: 200px; }              /* không có position */
+.badge { position: absolute; top: 0; right: 0; }  /* absolute so với viewport! */
+
+/* Sửa: */
+.card { width: 200px; position: relative; }
+.badge { position: absolute; top: 0; right: 0; }
+```
+
+---
+
+### Câu C2 — Cascade Puzzle — Dự đoán màu cuối cùng
+
+**Code CSS gốc:**
+```css
+.card        { color: blue; }
+.card .title { font-size: 20px; }
+.highlight   { color: green !important; }
+#featured    { border: 2px solid gold; }
+.card p      { color: inherit; }
+```
+
+**Phân tích từng element:**
+
+| Element | Selector nào match | Specificity | Màu cuối |
+|---|---|---|---|
+| `h2.title.highlight` trong `#featured` | `.highlight { color: green !important }` | !important vô địch | 🟢 **green** |
+| `p` (không có class) trong `#featured` | `.card p { color: inherit }` → inherit từ `.card { color: blue }` | (0,1,1) | 🔵 **blue** |
+| `h2.title` trong `.card` thứ 2 | `.card .title` không set color → kế thừa `.card { color: blue }` | (0,1,1) | 🔵 **blue** |
+| `p.highlight` trong `.card` thứ 2 | `.highlight { color: green !important }` | !important | 🟢 **green** |
+
+**Bài học từ Cascade Puzzle:**
+- `!important` thắng tất cả, kể cả ID selector (specificity 1,0,0).
+- `color: inherit` không phải "không có màu" — nó chủ động lấy màu từ element cha.
+- Khi không có color được set trực tiếp, element kế thừa (inherit) màu từ cha gần nhất.
