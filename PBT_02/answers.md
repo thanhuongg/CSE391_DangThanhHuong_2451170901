@@ -44,6 +44,64 @@ Câu A3:
 2. Cặp thẻ "fieldset" và "legend" là cách chuẩn xác nhất để nhóm các radio buttons hoặc checkboxes có liên quan mật thiết với nhau.  
 Ví dụ cụ thể: Khi tạo phần chọn giới tính trong form đăng ký,sử dụng "fieldset" để bao bọc toàn bộ các lựa chọn (Nam / Nữ / Khác), và dùng thẻ "legend" để đặt tiêu đề chung "Giới tính" cho cả nhóm đó
 
+Câu A4 (5đ) — Media
+
+1. Thuộc tính `loading="lazy"` trên thẻ `<img>`**
+
+`loading="lazy"` yêu cầu trình duyệt **trì hoãn tải ảnh** cho đến khi ảnh gần xuất hiện trong viewport (vùng nhìn thấy của người dùng). Thay vì tải tất cả ảnh ngay khi trang load, trình duyệt chỉ tải ảnh "near-viewport" trước.
+
+Cải thiện:
+- Giảm băng thông cần thiết cho lần tải đầu tiên.
+- Tăng tốc độ tải trang (đặc biệt trang có nhiều ảnh như trang sản phẩm).
+- Tiết kiệm data cho người dùng mobile.
+
+Khi nào KHÔNG nên dùng:
+- Ảnh above-the-fold (ảnh hiển thị ngay khi trang load, không cần scroll) — tuyệt đối không dùng `loading="lazy"` vì trình duyệt sẽ trì hoãn tải ảnh mà người dùng đang cần xem ngay, gây "hổng ảnh" trong vài giây đầu.
+- Ảnh trong `<noscript>` — lazy loading cần JavaScript để hoạt động.
+- Ảnh logo, hero banner — đây là ảnh quan trọng hiển thị ngay.
+
+2. Tại sao nên cung cấp nhiều `<source>` trong `<video>`?
+
+Mỗi trình duyệt hỗ trợ các format video khác nhau. Bằng cách cung cấp nhiều `<source>`, trình duyệt sẽ chọn format đầu tiên mà nó hỗ trợ:
+
+```html
+<video controls>
+    <source src="video.webm" type="video/webm">  <!-- Chrome, Firefox, Edge -->
+    <source src="video.mp4" type="video/mp4">    <!-- Phổ biến nhất, Safari hỗ trợ -->
+    <source src="video.ogv" type="video/ogg">    <!-- Firefox cũ -->
+    <p>Trình duyệt của bạn không hỗ trợ video HTML5.</p>
+</video>
+```
+
+3 format video web phổ biến:
+- MP4 (H.264) — Phổ biến nhất, được hỗ trợ bởi hầu hết trình duyệt và thiết bị.
+- WebM (VP8/VP9) — Định dạng mở do Google phát triển, chất lượng tốt, file nhỏ hơn MP4.
+- OGG/Theora — Định dạng mở, hỗ trợ tốt trên Firefox/Opera cũ.
+
+3. Thuộc tính `alt` trên `<img>`
+
+`alt` cung cấp **văn bản thay thếcho ảnh trong các trường hợp:
+- Ảnh không tải được (broken link, mạng chậm).
+- Người dùng dùng screen reader (khiếm thị).
+- Trình duyệt text-only.
+- Search engine indexing (Google đọc alt để hiểu ảnh).
+
+Viết `alt` tốt cho 3 trường hợp:
+
+```html
+<!-- Ảnh sản phẩm — mô tả cụ thể, hữu ích cho SEO và accessibility -->
+<img src="iphone16.jpg" alt="iPhone 16 Pro Max 256GB màu Titan Tự nhiên - mặt trước">
+
+<!-- Ảnh trang trí (decorative) — để alt="" (rỗng), không mô tả gì -->
+<!-- Screen reader sẽ bỏ qua ảnh này hoàn toàn, đúng vì nó không mang thông tin -->
+<img src="divider-line.png" alt="">
+
+<!-- Ảnh biểu đồ — mô tả đầy đủ dữ liệu, kể cả người không nhìn thấy biểu đồ vẫn hiểu -->
+<img src="revenue-q1-2026.png"
+     alt="Biểu đồ cột doanh thu Q1/2026: Tháng 1 đạt 2,3 tỷ, tháng 2 đạt 1,8 tỷ, tháng 3 đạt 3,1 tỷ đồng. Tổng quý đạt 7,2 tỷ, tăng 15% so với cùng kỳ năm ngoái.">
+```
+
+
 Câu A5:
 
 Cách 1: Sử dụng thẻ "img" độc lập, thẻ "img" là phương pháp cơ bản nhất để hiển thị một ảnh đơn lẻ trên trình duyệt.Theo nguyên tắc thực hành tốt nhất, thẻ này luôn cần đi kèm thuộc tính src và alt       
@@ -92,3 +150,58 @@ Sửa: `<input type="checkbox" id="tos" name="tos" required> <label for="tos">T�
 Lỗi 8: Dòng 20 — Sử dụng` <input type="submit">` thay vì thẻ `<button type="submit">` 
 
 Sửa: `<button type="submit">Gửi</button>`
+
+
+Câu C2 (10đ) — Debug Flexbox
+
+Lỗi 1: Cards không đều chiều cao, nút "Mua" bị nhảy
+
+Nguyên nhân: Cards được style với `width: 30%` nhưng không dùng Flexbox column direction bên trong card. Nút "Mua" không có cách nào biết đáy card ở đâu vì card không phải flex container.
+
+Sửa:
+```css
+.card-container { display: flex; flex-wrap: wrap; }
+.card {
+  width: 30%;
+  margin: 1.5%;
+  display: flex;          
+  flex-direction: column;  
+}
+.card img { width: 100%; }
+.card h3 { font-size: 18px; }
+.card .btn {
+  padding: 10px;
+  margin-top: auto;        
+}
+```
+
+Lỗi 2: Items nằm giữa container 100vh nhưng vẫn dính góc trái trên
+
+Nguyên nhân: `.hero` đã là flex container nhưng thiếu `justify-content: center` (căn ngang) và `align-items: center` (căn dọc).
+
+Sửa:
+```css
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+}
+.hero-content {
+  text-align: center;
+}
+```
+
+Lỗi 3: Sidebar bị co lại khi content quá dài
+
+Nguyên nhân: Flex items mặc định có `flex-shrink: 1` → sidebar bị thu nhỏ để nhường chỗ cho content dài. `.sidebar` không có `flex-shrink: 0` để giữ cố định 250px.
+
+Sửa:
+```css
+.layout { display: flex; }
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;     
+}
+.content { flex: 1; }
+```
