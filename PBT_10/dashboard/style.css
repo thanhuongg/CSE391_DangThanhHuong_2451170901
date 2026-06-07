@@ -1,0 +1,236 @@
+/* Dashboard — Đặng Thanh Hưởng 66KTPM1 */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    min-height: 100vh;
+    color: #1e293b;
+}
+
+.app { max-width: 1200px; margin: 0 auto; padding: 24px 20px; }
+
+/* HEADER */
+.dash-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.dash-title h1   { font-size: 1.7rem; }
+.author          { color: #64748b; font-size: 0.8rem; margin-top: 2px; }
+
+.dash-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.load-time       { font-size: 0.85rem; color: #64748b; }
+.load-time strong{ color: #16a34a; }
+
+.btn-refresh {
+    padding: 10px 20px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.15s;
+}
+.btn-refresh:hover   { filter: brightness(1.12); transform: translateY(-1px); }
+.btn-refresh:active  { transform: translateY(0); }
+.btn-refresh:disabled{ opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* GLOBAL LOADING */
+.global-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    gap: 16px;
+    color: #64748b;
+}
+
+.spinner-big {
+    width: 52px; height: 52px;
+    border: 5px solid #e2e8f0;
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* DASHBOARD GRID */
+.dash-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .dash-grid { grid-template-columns: 1fr; }
+}
+
+.widget-wide { grid-column: 1 / -1; }
+
+/* WIDGET */
+.widget {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.widget-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    background: #fafafa;
+}
+
+.widget-icon  { font-size: 1.3rem; }
+.widget-title { font-size: 1rem; font-weight: 700; color: #1e293b; flex: 1; }
+
+.widget-badge {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.badge-loading { background: #fef3c7; color: #92400e; }
+.badge-success { background: #dcfce7; color: #166534; }
+.badge-error   { background: #fee2e2; color: #991b1b; }
+
+.widget-body { padding: 20px; }
+
+/* SKELETON */
+.widget-skeleton {
+    height: 140px;
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+    border-radius: 8px;
+}
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+/* WIDGET ERROR */
+.widget-error {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: #fef2f2;
+    border-radius: 10px;
+    color: #dc2626;
+    font-size: 0.88rem;
+}
+.widget-error .err-icon { font-size: 1.5rem; flex-shrink: 0; }
+
+/* ====== WEATHER WIDGET CONTENT ====== */
+.weather-display { display: flex; align-items: center; gap: 20px; }
+.weather-big-icon{ font-size: 4rem; line-height: 1; }
+.weather-info h3 { font-size: 2.4rem; font-weight: 700; color: #1e40af; letter-spacing: -1px; }
+.weather-info p  { color: #64748b; font-size: 0.9rem; margin-top: 2px; }
+.weather-info .location { font-size: 1rem; font-weight: 600; color: #1e293b; margin-bottom: 4px; }
+
+.weather-extras {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.weather-extra-item {
+    background: #f0f4ff;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 0.82rem;
+}
+.weather-extra-item .label { color: #64748b; margin-bottom: 2px; }
+.weather-extra-item .value { font-weight: 600; color: #1e293b; font-size: 0.95rem; }
+
+/* ====== COUNTRY WIDGET CONTENT ====== */
+.country-flag   { font-size: 3.5rem; text-align: center; margin-bottom: 12px; }
+.country-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.country-stat {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 10px 12px;
+    border: 1px solid #e2e8f0;
+}
+.country-stat .label { font-size: 0.75rem; color: #64748b; }
+.country-stat .value { font-size: 0.92rem; font-weight: 600; color: #1e293b; margin-top: 2px; }
+
+/* ====== USERS WIDGET CONTENT ====== */
+.users-list { display: flex; flex-direction: column; gap: 12px; }
+
+.user-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+.user-avatar {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid #e2e8f0;
+}
+
+.user-info      { flex: 1; overflow: hidden; }
+.user-name      { font-weight: 600; font-size: 0.92rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.user-meta      { font-size: 0.78rem; color: #64748b; margin-top: 2px; }
+.user-location  { font-size: 0.78rem; color: #94a3b8; }
+
+/* ====== POSTS WIDGET CONTENT ====== */
+.posts-list { display: flex; flex-direction: column; gap: 10px; }
+
+.post-row {
+    padding: 12px 14px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border-left: 3px solid #2563eb;
+    border: 1px solid #e2e8f0;
+    border-left: 3px solid #2563eb;
+}
+.post-title {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: #1e293b;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-transform: capitalize;
+    margin-bottom: 4px;
+}
+.post-body {
+    font-size: 0.8rem;
+    color: #64748b;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    line-height: 1.4;
+}

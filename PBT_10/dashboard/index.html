@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-API Dashboard — Đặng Thanh Hưởng 66KTPM1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+    <header class="dash-header">
+        <div class="dash-title">
+            <h1>📊 Dashboard</h1>
+            <p class="author">Đặng Thanh Hưởng — 66KTPM1</p>
+        </div>
+        <div class="dash-actions">
+            <span class="load-time" id="loadTime" style="display:none">
+                ⚡ Tải trong <strong id="loadMs">0</strong>ms
+            </span>
+            <button class="btn-refresh" id="refreshBtn">🔄 Refresh All</button>
+        </div>
+    </header>
+
+    <!-- GLOBAL LOADING -->
+    <div class="global-loading" id="globalLoading">
+        <div class="spinner-big"></div>
+        <p>Đang tải dữ liệu từ 4 APIs...</p>
+    </div>
+
+    <!-- DASHBOARD GRID -->
+    <div class="dash-grid" id="dashGrid" style="display:none">
+
+        <!-- WIDGET 1: Weather (Open-Meteo) -->
+        <div class="widget" id="widget-weather">
+            <div class="widget-header">
+                <span class="widget-icon">🌤️</span>
+                <h2 class="widget-title">Thời tiết Hà Nội</h2>
+                <span class="widget-badge" id="badge-weather">loading</span>
+            </div>
+            <div class="widget-body" id="body-weather">
+                <div class="widget-skeleton"></div>
+            </div>
+        </div>
+
+        <!-- WIDGET 2: Vietnam Country Info (REST Countries) -->
+        <div class="widget" id="widget-country">
+            <div class="widget-header">
+                <span class="widget-icon">🇻🇳</span>
+                <h2 class="widget-title">Thông tin Việt Nam</h2>
+                <span class="widget-badge" id="badge-country">loading</span>
+            </div>
+            <div class="widget-body" id="body-country">
+                <div class="widget-skeleton"></div>
+            </div>
+        </div>
+
+        <!-- WIDGET 3: Random Users (Random User API) -->
+        <div class="widget widget-wide" id="widget-users">
+            <div class="widget-header">
+                <span class="widget-icon">👥</span>
+                <h2 class="widget-title">Người dùng ngẫu nhiên</h2>
+                <span class="widget-badge" id="badge-users">loading</span>
+            </div>
+            <div class="widget-body" id="body-users">
+                <div class="widget-skeleton"></div>
+            </div>
+        </div>
+
+        <!-- WIDGET 4: JSONPlaceholder Posts -->
+        <div class="widget widget-wide" id="widget-posts">
+            <div class="widget-header">
+                <span class="widget-icon">📝</span>
+                <h2 class="widget-title">Bài viết mới nhất</h2>
+                <span class="widget-badge" id="badge-posts">loading</span>
+            </div>
+            <div class="widget-body" id="body-posts">
+                <div class="widget-skeleton"></div>
+            </div>
+        </div>
+
+    </div><!-- /.dash-grid -->
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
