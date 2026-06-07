@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Layout — Đặng Thanh Hưởng 66KTPM1</title>
+    <link rel="stylesheet" href="debug_layout.css">
+</head>
+<body>
+
+    <h1>Debug Layout — C1</h1>
+    <p>Bài làm: Đặng Thanh Hưởng — 66KTPM1</p>
+
+    <h2>Phân tích lỗi</h2>
+    <div class="explanation">
+        <p><strong>Code gốc bị lỗi:</strong></p>
+        <pre>
+.sidebar  { width: 300px; padding: 20px; border: 1px solid; float: left; }
+.content  { width: 660px; padding: 30px; border: 1px solid; float: left; }
+        </pre>
+        <p><strong>Tính chiều rộng thực tế (content-box):</strong></p>
+        <ul>
+            <li>Sidebar: 300 + 20×2 (padding) + 1×2 (border) = <strong>342px</strong></li>
+            <li>Content: 660 + 30×2 (padding) + 1×2 (border) = <strong>722px</strong></li>
+            <li>Tổng: 342 + 722 = <strong>1064px &gt; 1000px</strong> → content bị đẩy xuống dòng mới!</li>
+        </ul>
+    </div>
+
+    <!-- ====== CÁCH SỬA 1: dùng border-box ====== -->
+    <h2>Cách sửa 1 — Dùng <code>box-sizing: border-box</code></h2>
+    <p>Width 300px và 660px <em>đã bao gồm</em> padding và border → tổng chính xác = 1000px.</p>
+
+    <div class="container-fix1">
+        <div class="sidebar-fix1">
+            <h3>Sidebar</h3>
+            <p>width: 300px (border-box)<br>Chiều rộng thực = 300px</p>
+        </div>
+        <div class="content-fix1">
+            <h3>Content</h3>
+            <p>width: 660px (border-box)<br>Chiều rộng thực = 660px</p>
+            <p>Tổng: 300 + 660 + 40 (gap) = 1000px ✅</p>
+        </div>
+    </div>
+
+    <!-- ====== CÁCH SỬA 2: tính toán lại width không dùng border-box ====== -->
+    <h2>Cách sửa 2 — Tính toán lại <code>width</code> để bù cho padding/border</h2>
+    <p>Không dùng border-box, nhưng trừ padding và border ra khỏi width:</p>
+    <div class="explanation">
+        <ul>
+            <li>Sidebar muốn rộng 300px: width = 300 - 20×2 - 1×2 = <strong>258px</strong></li>
+            <li>Content muốn rộng 660px: width = 660 - 30×2 - 1×2 = <strong>598px</strong></li>
+            <li>Tổng: (258+40+2) + (598+60+2) = 300 + 660 = <strong>1000px ✅</strong></li>
+        </ul>
+    </div>
+
+    <div class="container-fix2">
+        <div class="sidebar-fix2">
+            <h3>Sidebar</h3>
+            <p>width: 258px (content-box)<br>Chiều rộng thực = 300px</p>
+        </div>
+        <div class="content-fix2">
+            <h3>Content</h3>
+            <p>width: 598px (content-box)<br>Chiều rộng thực = 660px</p>
+        </div>
+    </div>
+
+    <h2>Cascade Puzzle — C2</h2>
+    <div class="cascade-demo">
+        <div class="container">
+            <div class="card" id="featured">
+                <h2 class="title highlight">Sản phẩm A</h2>
+                <p>Mô tả sản phẩm</p>
+            </div>
+            <div class="card">
+                <h2 class="title">Sản phẩm B</h2>
+                <p class="highlight">Mô tả sản phẩm B</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation">
+        <h3>Phân tích Cascade Puzzle:</h3>
+        <ol>
+            <li><strong>"Sản phẩm A" (h2.title.highlight trong #featured):</strong>
+                <ul>
+                    <li>font-size: 20px (từ <code>.card .title</code>)</li>
+                    <li>color: <span style="color:green; font-weight:bold">green</span> (từ <code>.highlight { color: green !important }</code>
+                        — !important thắng tất cả kể cả #featured .title)</li>
+                </ul>
+            </li>
+            <li><strong>"Mô tả sản phẩm" (p trong #featured.card):</strong>
+                <ul>
+                    <li>color: blue (inherit từ .card — <code>.card p { color: inherit }</code> → inherit lấy color của .card = blue)</li>
+                </ul>
+            </li>
+            <li><strong>"Sản phẩm B" (h2.title trong .card thứ 2):</strong>
+                <ul>
+                    <li>font-size: 20px (từ <code>.card .title</code>)</li>
+                    <li>color: red — SAI. Đúng là blue (từ .card { color: blue }) — .card .title không set color</li>
+                </ul>
+            </li>
+            <li><strong>"Mô tả sản phẩm B" (p.highlight):</strong>
+                <ul>
+                    <li>color: <span style="color:green; font-weight:bold">green</span> (từ <code>.highlight { color: green !important }</code>)</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+</body>
+</html>
