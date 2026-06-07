@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Layout — Đặng Thanh Hưởng 66KTPM1</title>
+    <link rel="stylesheet" href="css/flexbox.css">
+</head>
+<body>
+
+    <h1>Flexbox Layout Lab</h1>
+    <p class="author">Đặng Thanh Hưởng — 66KTPM1</p>
+
+    <!-- ====== BÀI 1: NAVBAR ====== -->
+    <h2>Bài 1 — Navbar (justify-content: space-between)</h2>
+    <nav class="navbar">
+        <div class="logo">ShopTLU</div>
+        <ul class="nav-links">
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Sản phẩm</a></li>
+            <li><a href="#">Về chúng tôi</a></li>
+            <li><a href="#">Liên hệ</a></li>
+        </ul>
+        <button class="nav-btn">Đăng nhập</button>
+    </nav>
+
+    <!-- ====== BÀI 2: CARD ROW ====== -->
+    <h2>Bài 2 — Card grid (flex-wrap)</h2>
+    <div class="card-row">
+        <div class="card">
+            <div class="card-img">🖥️</div>
+            <h3>Laptop Gaming</h3>
+            <p>Chip i9, RAM 32GB, RTX 4080</p>
+            <strong>35.990.000đ</strong>
+            <button class="btn-buy">Mua ngay</button>
+        </div>
+        <div class="card">
+            <div class="card-img">📱</div>
+            <h3>iPhone 16 Pro</h3>
+            <p>A18 Pro, Camera 48MP, 256GB</p>
+            <strong>25.990.000đ</strong>
+            <button class="btn-buy">Mua ngay</button>
+        </div>
+        <div class="card">
+            <div class="card-img">⌚</div>
+            <h3>Apple Watch Ultra</h3>
+            <p>GPS, 49mm, Titanium</p>
+            <strong>18.490.000đ</strong>
+            <button class="btn-buy">Mua ngay</button>
+        </div>
+        <div class="card">
+            <div class="card-img">🎧</div>
+            <h3>AirPods Pro 2</h3>
+            <p>ANC, Spatial Audio, USB-C</p>
+            <strong>5.990.000đ</strong>
+            <button class="btn-buy">Mua ngay</button>
+        </div>
+        <div class="card">
+            <div class="card-img">💻</div>
+            <h3>MacBook Pro M4</h3>
+            <p>M4 Pro, 18GB RAM, 512GB SSD</p>
+            <strong>45.990.000đ</strong>
+            <button class="btn-buy">Mua ngay</button>
+        </div>
+        <div class="card">
+            <div class="card-img">🖨️</div>
+            <h3>Máy in HP LaserJet</h3>
+            <p>Đơn sắc, In/Scan/Copy, WiFi</p>
+            <strong>3.290.000đ</strong>
+            <button class="btn-buy">Mua ngay</button>
+        </div>
+    </div>
+
+    <!-- ====== BÀI 3: HOLY GRAIL LAYOUT ====== -->
+    <h2>Bài 3 — Holy Grail Layout</h2>
+    <div class="holy-grail">
+        <header class="hg-header">Header</header>
+        <div class="hg-body">
+            <aside class="hg-sidebar-left">Sidebar trái<br>(Danh mục)</aside>
+            <main class="hg-main">
+                <p>Nội dung chính — chiếm phần còn lại (flex: 1)</p>
+                <p>Flex item này tự động giãn rộng theo container.</p>
+            </main>
+            <aside class="hg-sidebar-right">Sidebar phải<br>(Quảng cáo)</aside>
+        </div>
+        <footer class="hg-footer">Footer</footer>
+    </div>
+
+    <!-- ====== BÀI 4: CENTERING ====== -->
+    <h2>Bài 4 — Perfect Centering (align-items + justify-content)</h2>
+    <div class="center-demo">
+        <div class="center-box">
+            Căn giữa hoàn hảo
+            <br>cả ngang lẫn dọc
+        </div>
+    </div>
+
+    <!-- ====== PHÂN TÍCH ====== -->
+    <h2>Phân tích: flex-direction, flex-wrap, align-items, justify-content</h2>
+    <div class="analysis-grid">
+        <div class="analysis-card">
+            <h3>flex-direction</h3>
+            <p><code>row</code> (mặc định) — items xếp ngang<br>
+            <code>column</code> — items xếp dọc<br>
+            <code>row-reverse</code> — ngang, đảo chiều<br>
+            <code>column-reverse</code> — dọc, đảo chiều</p>
+        </div>
+        <div class="analysis-card">
+            <h3>flex-wrap</h3>
+            <p><code>nowrap</code> (mặc định) — không xuống dòng, thu nhỏ items<br>
+            <code>wrap</code> — xuống dòng khi hết chỗ<br>
+            <code>wrap-reverse</code> — wrap nhưng dòng mới ở trên</p>
+        </div>
+        <div class="analysis-card">
+            <h3>justify-content</h3>
+            <p>Căn trục chính (main axis):<br>
+            <code>flex-start / flex-end / center</code><br>
+            <code>space-between</code> — khoảng cách đều giữa<br>
+            <code>space-around / space-evenly</code></p>
+        </div>
+        <div class="analysis-card">
+            <h3>align-items</h3>
+            <p>Căn trục phụ (cross axis) cho <em>một dòng</em>:<br>
+            <code>flex-start / flex-end / center</code><br>
+            <code>stretch</code> (mặc định) — giãn theo chiều cao<br>
+            <code>baseline</code> — căn theo baseline text</p>
+        </div>
+    </div>
+
+</body>
+</html>
